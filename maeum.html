@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마음읽기 — 포트폴리오 · 박지호</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+--bg:#080b12;--bg-elev:#0d1119;--card:#0f1420;--line:rgba(255,255,255,.075);
+--ink:#eaf0f8;--ink-soft:#9fb0c6;--ink-mute:#617289;
+--accent:#6ba6ff;--accent-2:#9cc4ff;--accent-soft:rgba(107,166,255,.11);--accent-line:rgba(107,166,255,.28);
+--glow:rgba(107,166,255,.10);--glow2:rgba(60,110,200,.09);
+}
+/* ============ SHARED CASE-STUDY DESIGN SYSTEM ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;
+  overflow-x:hidden;
+  word-break:keep-all;
+  line-break:strict;
+}
+.code{word-break:normal}
+.wrap{max-width:920px;margin:0 auto;padding:0 28px}
+
+/* --- ambient background --- */
+.bg-field{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 78% -6%, var(--glow), transparent 70%),
+    radial-gradient(700px 600px at -8% 32%, var(--glow2), transparent 72%);
+}
+
+/* --- type utilities --- */
+.mono{font-family:'Space Mono','Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.eyebrow{font-family:'Space Mono','Roboto Mono',ui-monospace,monospace;
+  font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:12px;font-weight:700}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 14px var(--accent);flex:none}
+.eyebrow .num{color:var(--ink-mute);letter-spacing:.28em}
+
+/* --- section rhythm --- */
+section{padding:70px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+.s-title{font-size:clamp(26px,4.2vw,38px);font-weight:800;line-height:1.22;
+  letter-spacing:-0.035em;margin:20px 0 14px;text-wrap:balance}
+.s-title .hl{color:var(--accent)}
+.lead{font-size:17px;color:var(--ink-soft);max-width:66ch;margin-bottom:8px;text-wrap:pretty}
+.lead strong{color:var(--ink);font-weight:700}
+p{color:var(--ink-soft);font-size:15.5px;text-wrap:pretty}
+p strong{color:var(--ink);font-weight:700}
+p + p{margin-top:14px}
+.accent-strong{color:var(--accent);font-weight:700}
+
+/* ============ HERO ============ */
+.hero{padding:96px 0 60px;position:relative}
+.hero .eyebrow{margin-bottom:30px}
+.hero h1{font-size:clamp(38px,7vw,66px);font-weight:850;line-height:1.04;text-wrap:balance;
+  letter-spacing:-0.045em;margin-bottom:26px}
+.hero h1 .hl{color:var(--accent)}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch;line-height:1.7;text-wrap:pretty}
+.hero .sub strong{color:var(--ink);font-weight:700}
+
+/* signature stage (SVG lives here) */
+.stage{margin:52px 0 40px}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.chip{font-family:'Space Mono','Roboto Mono',monospace;font-size:12.5px;
+  padding:9px 15px;border:1px solid var(--line);border-radius:999px;
+  color:var(--ink-soft);background:var(--card);white-space:nowrap}
+.chip b{color:var(--accent);font-weight:700}
+
+/* meta line */
+.meta{margin-top:30px;font-size:14.5px;color:var(--ink-soft);line-height:1.9}
+.meta b{color:var(--ink);font-weight:700}
+.meta .accent{color:var(--accent);font-weight:700}
+
+/* ============ METRIC CARDS ============ */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:22px 20px;position:relative;overflow:hidden}
+.metric::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:.85}
+.metric .k{font-family:'Space Mono','Roboto Mono',monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px}
+.metric .v{font-size:27px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
+.metric .v .arw{color:var(--ink-mute);font-weight:400;margin:0 4px}
+.metric .v em{color:var(--accent);font-style:normal}
+.metric .note{font-size:12px;color:var(--ink-mute);margin-top:6px}
+
+/* ============ CARDS / GRID ============ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card h4{font-size:16px;font-weight:750;margin-bottom:9px;letter-spacing:-0.02em;color:var(--ink)}
+.card p{font-size:14px;line-height:1.62}
+.card .tag{font-family:'Space Mono','Roboto Mono',monospace;font-size:10.5px;
+  letter-spacing:.14em;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:12px;font-weight:700}
+.card .big{font-size:30px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;line-height:1}
+.card .big-sub{font-size:12.5px;color:var(--ink-mute);margin-top:8px}
+
+/* stat row (problem numbers) */
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 22px}
+.stat .n{font-size:40px;font-weight:850;letter-spacing:-0.04em;color:var(--accent);line-height:1}
+.stat .d{font-size:13.5px;color:var(--ink-soft);margin-top:12px;line-height:1.55}
+.src{font-family:'Space Mono','Roboto Mono',monospace;font-size:12px;color:var(--ink-mute);margin-top:18px}
+
+/* numbered role list */
+.roles{margin-top:26px;display:grid;gap:2px}
+.role{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:22px 4px;
+  border-top:1px solid var(--line);align-items:start}
+.role:first-child{border-top:none}
+.role .rn{font-family:'Space Mono','Roboto Mono',monospace;font-size:14px;color:var(--accent);
+  font-weight:700;letter-spacing:.1em;padding-top:2px}
+.role h4{font-size:17px;font-weight:750;letter-spacing:-0.02em;margin-bottom:6px;color:var(--ink)}
+.role p{font-size:14.5px;line-height:1.65}
+
+/* interview cards */
+.iv{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.iv .who{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.iv .badge{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  font-weight:800;font-size:16px;color:#0b0f16;background:var(--accent);flex:none}
+.iv .who .nm{font-size:15px;font-weight:750;color:var(--ink);line-height:1.2}
+.iv .who .rl{font-size:12px;color:var(--ink-mute);font-family:'Space Mono','Roboto Mono',monospace}
+.iv .quote{font-size:14.5px;color:var(--ink);line-height:1.68;font-style:italic;
+  border-left:2px solid var(--accent);padding-left:14px;margin-bottom:16px}
+.iv .insight-l{font-family:'Space Mono','Roboto Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:5px}
+.iv .insight{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+
+/* mapping (research -> design) */
+.maps{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:8px 24px}
+.map{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;
+  padding:16px 0;border-top:1px solid var(--line);font-size:14.5px}
+.map:first-child{border-top:none}
+.map .from{color:var(--ink-soft)}
+.map .arw{color:var(--accent);font-family:'Space Mono','Roboto Mono',monospace;font-weight:700}
+.map .to{color:var(--ink);font-weight:650}
+
+/* callout / trouble-shooting */
+.callout{margin-top:26px;background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:16px;padding:26px 28px}
+.callout .ttl{font-family:'Space Mono','Roboto Mono',monospace;font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:16px}
+.callout .row{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:8px 0;font-size:14.5px;align-items:start}
+.callout .row .lb{font-weight:800;color:var(--accent);letter-spacing:.02em}
+.callout .row .tx{color:var(--ink-soft)}
+.callout .row .tx b{color:var(--ink)}
+.callout .quote-line{margin-top:16px;padding-top:16px;border-top:1px solid var(--accent-line);
+  font-size:15px;color:var(--ink);font-weight:650;font-style:italic}
+
+/* feature list (solution) */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  display:flex;flex-direction:column;gap:8px}
+.fcard .fn{font-family:'Space Mono','Roboto Mono',monospace;font-size:12px;color:var(--accent);font-weight:700}
+.fcard h4{font-size:16px;font-weight:750;color:var(--ink);letter-spacing:-0.02em}
+.fcard p{font-size:13.5px;line-height:1.6}
+.fcard .delta{margin-top:auto;padding-top:10px;font-family:'Space Mono','Roboto Mono',monospace;
+  font-size:13px;color:var(--ink)}
+.fcard .delta em{color:var(--accent);font-style:normal;font-weight:700}
+
+/* code block */
+.code{background:#0a0d13;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:18px;
+  font-family:'Space Mono','Roboto Mono',monospace;font-size:12.5px;line-height:1.85;color:var(--ink-soft);
+  overflow-x:auto;white-space:pre}
+.code .cm{color:var(--ink-mute)}
+.code .kw{color:var(--accent)}
+
+/* checklist */
+.checks{margin-top:22px;display:grid;gap:11px}
+.check{display:flex;gap:13px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+.check .mk{color:var(--accent);font-weight:800;flex:none;margin-top:1px}
+.check b{color:var(--ink);font-weight:700}
+
+/* takeaways */
+.take{margin-top:22px;display:grid;gap:14px}
+.tk{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.tk h4{font-size:15.5px;font-weight:750;color:var(--ink);margin-bottom:7px;letter-spacing:-0.02em}
+.tk p{font-size:14px;line-height:1.62}
+.tk.hl{border-color:var(--accent-line);background:var(--accent-soft)}
+
+/* caption */
+.cap{font-family:'Space Mono','Roboto Mono',monospace;font-size:11.5px;color:var(--ink-mute);
+  text-align:center;margin-top:14px;letter-spacing:.04em}
+
+/* footer */
+footer{padding:56px 0 70px;border-top:1px solid var(--line);text-align:center}
+footer .fnote{font-size:15px;color:var(--ink);font-weight:700;margin-bottom:16px;letter-spacing:-0.02em}
+footer .fmeta{font-family:'Space Mono','Roboto Mono',monospace;font-size:12.5px;color:var(--ink-mute);
+  letter-spacing:.06em;line-height:2}
+footer .fmeta a{color:var(--accent);text-decoration:none}
+
+/* reveal animation */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}
+  .draw{stroke-dashoffset:0 !important;animation:none !important}}
+
+/* responsive */
+@media(max-width:720px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric{padding:18px 15px}
+  .metric .v{font-size:21px}
+  .metric .v .arw{margin:0 2px}
+  .hero h1{font-size:clamp(34px,9vw,52px)}
+  .stat .n{font-size:34px}
+  .grid2,.grid3,.feat,.statrow{grid-template-columns:1fr}
+  .role{grid-template-columns:44px 1fr;gap:14px}
+  .map{grid-template-columns:1fr;gap:4px;text-align:left}
+  .map .arw{transform:rotate(90deg);width:min-content}
+  .callout .row{grid-template-columns:52px 1fr}
+  .wrap{padding:0 20px}
+  .hero{padding:64px 0 44px}
+}
+
+</style></head><body>
+<div class="bg-field"></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow rv">2024 캡스톤디자인 · Team 7 · AI 감정 분석 상담 지원</div>
+  <h1 class="rv">상담사가<br><span class="hl">상담에만</span> 집중하도록</h1>
+  <p class="sub rv">마음읽기 — 정신건강 상담 현장의 문제를 <strong>현직 상담사 심층 인터뷰로 정의</strong>하고, 녹음 한 번으로 축어록·감정 분석·시각화까지 자동화한 웹서비스. 저는 그 요구사항을 <strong>백엔드로 직접 설계·구현</strong>했습니다.</p>
+  
+<div class="stage rv"><svg viewBox="0 0 860 250" width="100%" role="img" aria-label="상담 흐름에 따른 감정 파도">
+  <defs>
+    <linearGradient id="mwFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6ba6ff" stop-opacity=".34"/><stop offset="1" stop-color="#6ba6ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="mwGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g stroke="rgba(255,255,255,.06)" stroke-width="1">
+    <line x1="60" y1="55" x2="800" y2="55"/><line x1="60" y1="105" x2="800" y2="105"/>
+    <line x1="60" y1="155" x2="800" y2="155"/><line x1="60" y1="205" x2="800" y2="205"/>
+  </g>
+  <g fill="#617289" font-family="'Space Mono',monospace" font-size="10.5" letter-spacing="1">
+    <text x="18" y="59">행복</text><text x="18" y="109">평온</text><text x="18" y="159">불안</text><text x="18" y="209">우울</text>
+  </g>
+  <path d="M60,150 C130,150 150,90 210,100 C270,110 300,180 360,170 C420,160 440,120 500,140
+           C560,160 590,80 650,95 C710,110 740,60 800,72 L800,230 L60,230 Z" fill="url(#mwFill)"/>
+  <path class="draw" d="M60,150 C130,150 150,90 210,100 C270,110 300,180 360,170 C420,160 440,120 500,140
+           C560,160 590,80 650,95 C710,110 740,60 800,72" fill="none" stroke="#6ba6ff" stroke-width="3.5"
+           stroke-linecap="round" filter="url(#mwGlow)"/>
+  <circle cx="800" cy="72" r="6.5" fill="#9cc4ff" filter="url(#mwGlow)"/>
+</svg></div>
+  <div class="chips rv">
+    <span class="chip">역할 <b>Backend · 문제 정의·리서치</b></span>
+    <span class="chip">기간 <b>2024.09–12</b></span>
+    <span class="chip">팀 <b>3인</b> (FE·AI·BE)</span>
+    <span class="chip">Node.js · MySQL · OpenAI · Clova STT</span>
+  </div>
+  <div class="meta rv"><b>박지호</b> · 현직 상담사 인터뷰 기반 문제 정의 · <span class="accent">RESTful API·인증·파일·AI 연동·PDF</span> 서버 사이드 전체 구현 · KoBERT→OpenAI 모델 전환 주도</div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">01</span> Problem</div>
+  <h2 class="s-title rv">상담 수요는 급증하는데,<br>현장은 <span class="hl">인력과 시간</span>에 막혀&nbsp;있었다</h2>
+  <p class="lead rv">정신 건강의 중요성이 커지며 심리 상담 수요가 급증하고 있습니다. 그러나 상담 현장은 인력 부족과 과중한 행정 업무로 구조적 한계에 부딪혀 있었고, <strong>이 지점에서 프로젝트를 시작</strong>했습니다.</p>
+  <div class="statrow rv">
+    <div class="stat"><div class="n">+35.1%</div><div class="d">2017–2021년 우울증 환자 증가율</div></div>
+    <div class="stat"><div class="n">+32.3%</div><div class="d">같은 기간 불안장애 환자 증가율</div></div>
+    <div class="stat"><div class="n">27%</div><div class="d">심야 자살상담 응답률 — 수요 대비 인력 부족</div></div>
+  </div>
+  <div class="checks rv" style="margin-top:26px">
+    <div class="check"><span class="mk">›</span><span><b>과도한 업무 부담</b> — 상담사 1인당 담당 내담자 수 과다로 개별 집중이 어려움</span></div>
+    <div class="check"><span class="mk">›</span><span><b>감정 분석의 어려움</b> — 감정 파악이 상담의 핵심이나 상담사의 주관적 판단에 의존</span></div>
+    <div class="check"><span class="mk">›</span><span><b>상담 과정의 비효율</b> — 축어록 작성·행정업무 등 수기 기록에 과도한 시간 소요</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">02</span> Research</div>
+  <h2 class="s-title rv">통계가 아니라, <span class="hl">현장의 목소리</span>에서 설계를 시작했다</h2>
+  <p class="lead rv">통계만으로는 실제 현장의 니즈를 알 수 없다고 판단해, 기획 단계에서 <strong>현직 학교 상담 선생님(Wee 클래스)과 심층 인터뷰</strong>를 진행했습니다. 여기서 확인한 목소리가 이후 기능 우선순위와 백엔드 설계 방향의 기준이 됐습니다.</p>
+  <div class="src rv" style="margin-top:0;margin-bottom:6px">반구조화 심층 인터뷰 · 약 40분 · 현직 상담 교사 1인(익명) · 사전 질문지 + 자유 응답</div>
+  <div class="grid3 rv">
+    <div class="iv"><div class="who"><div class="badge">①</div><div><div class="nm">기록 부담</div><div class="rl">time drain</div></div></div>
+      <div class="quote">"상담보다 기록에 더 많은 시간을 씁니다."</div>
+      <div class="insight-l">Insight</div><div class="insight">한 회기가 끝나면 축어록·상담일지 정리에 상담 시간만큼이 다시 든다 → 자동 축어록·요약의 필요성.</div></div>
+    <div class="iv"><div class="who"><div class="badge">②</div><div><div class="nm">주관적 판단</div><div class="rl">consistency</div></div></div>
+      <div class="quote">"감정 판단이 상담사마다, 그날그날 다릅니다."</div>
+      <div class="insight-l">Insight</div><div class="insight">감정 파악이 상담의 핵심이나 주관에 의존해 기록의 일관성이 떨어짐 → 데이터 기반 감정 분석·시각화.</div></div>
+    <div class="iv"><div class="who"><div class="badge">③</div><div><div class="nm">흩어진 이력</div><div class="rl">context</div></div></div>
+      <div class="quote">"이전 회기 내용을 다시 찾아보기가 번거롭습니다."</div>
+      <div class="insight-l">Insight</div><div class="insight">내담자별 이력이 흩어져 회기 간 맥락을 잇기 어려움 → 내담자 단위 누적 DB·대시보드.</div></div>
+  </div>
+  <div class="maps rv">
+    <div class="map"><div class="from">축어록 수기 작성 부담</div><div class="arw">→</div><div class="to">녹음 업로드(Multer) + STT 자동 축어록</div></div>
+    <div class="map"><div class="from">주관적 감정 판단</div><div class="arw">→</div><div class="to">AI 감정 분석 + 감정 레이더/파도 시각화</div></div>
+    <div class="map"><div class="from">흩어진 내담자 이력</div><div class="arw">→</div><div class="to">내담자별 세션·감정 이력 누적 DB &amp; 대시보드</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">03</span> Solution</div>
+  <h2 class="s-title rv">업로드 → 감정&nbsp;분석 → 대시보드,<br><span class="hl">하나의 흐름</span>으로</h2>
+  <p class="lead rv">상담사는 녹음 파일 업로드 한 번으로 축어록 작성부터 감정 분석까지 자동화된 결과를 받아, 반복적인 행정 업무 대신 상담 본연의 역할에 집중할 수 있습니다.</p>
+  <div class="feat rv">
+    <div class="fcard"><span class="fn">01</span><h4>녹음 업로드 · 자동 축어록</h4><p>녹음 파일 한 번으로 STT 축어록 생성. 상담사/내담자 화자를 구분해 정리.</p></div>
+    <div class="fcard"><span class="fn">02</span><h4>감정 대시보드</h4><p>전체 내담자 수·총 상담 횟수·최다 주제 등 종합 현황과 내담자별 6가지 감정을 레이더로.</p></div>
+    <div class="fcard"><span class="fn">03</span><h4>감정 파도 · 문장별 라벨</h4><p>상담 흐름에 따른 감정 변화를 그래프로, 문장 단위 감정 라벨과 함께 시각화.</p></div>
+    <div class="fcard"><span class="fn">04</span><h4>상담 결과 PDF</h4><p>키워드·주요 감정·축어록·AI 솔루션을 담은 회차별 PDF 다운로드.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">04</span> My Contribution</div>
+  <h2 class="s-title rv">개발자의 언어를 이해하는 기획자로서,<br><span class="hl">백엔드 전반</span>을 책임졌다</h2>
+  <p class="lead rv">3인 팀에서 백엔드 전반을 단독으로 담당했습니다. API 서버 설계·구현부터 인증, 파일 처리, DB, AI 연동, PDF 변환까지 서버 사이드 전체를 책임졌고 — 무엇을 만들지는 <strong>현장 인터뷰에서 도출한 요구사항</strong>이 결정했습니다.</p>
+  <div class="roles rv">
+    <div class="role"><div class="rn">01</div><div><h4>RESTful API · 계층형 아키텍처</h4><p>Controller → Service → Repository로 관심사를 분리하고 DTO/Entity 변환을 일관 적용. 대시보드 API는 <strong>countEmotions() · findMostFrequentEmotion()</strong> 으로 감정 통계를 집계해 시각화 데이터를 반환.</p></div></div>
+    <div class="role"><div class="rn">02</div><div><h4>인증 · 파일 업로드</h4><p><strong>JWT 기반 stateless 인증</strong>으로 요청별 신원 검증. Multer로 녹음 파일을 저장하되 타임스탬프를 붙여 파일명 충돌을 방지.</p></div></div>
+    <div class="role"><div class="rn">03</div><div><h4>감정 분석 파이프라인 연동</h4><p>STT → 감정 분류 → 요약의 파이프라인을 백엔드에서 단계별로 연동·처리. DB는 <strong>7개 테이블로 정규화</strong>하고, 감정 결과를 세션·문장 단위로 저장해 파도/레이더 시각화에 재사용.</p></div></div>
+  </div>
+  <div class="callout rv">
+    <div class="ttl">핵심 판단 · KoBERT → OpenAI API 전환</div>
+    <div class="row"><div class="lb">문제</div><div class="tx">Naver Clova STT + KoBERT 조합으로 감정 분류를 시도했으나, <b>긴 문장·복잡한 문맥에서 정확도가 낮고</b> 재학습·튜닝에 과도한 리소스가 필요했습니다.</div></div>
+    <div class="row"><div class="lb">해결</div><div class="tx">감정 분석·요약을 <b>OpenAI API로 전환</b>. 별도 학습 없이 즉시 적용 가능하고, 복잡한 문맥에서도 감정 분류와 요약을 동시에 높은 정확도로 수행하도록 개선했습니다.</div></div>
+    <div class="row"><div class="lb">결과</div><div class="tx">STT 데이터를 더 신뢰성 있게 분석·활용 → 감정 분석 정확도와 처리 효율을 모두 향상.</div></div>
+    <div class="quote-line">'모델이 좋다'가 아니라 '우리 데이터에서 잘 동작하는가' — 검증을 기준으로 삼은 기술 의사결정이었다.</div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">05</span> Architecture · Stack</div>
+  <h2 class="s-title rv">기술 스택 &amp; <span class="hl">데이터 모델</span></h2>
+  <div class="grid3 rv">
+    <div class="card"><span class="tag">Backend</span><h4>Node.js · Express</h4><p>RESTful API 서버 · 계층형 구조.</p></div>
+    <div class="card"><span class="tag">AI</span><h4>OpenAI · Clova STT</h4><p>텍스트 요약 · 감정 분석 · STT.</p></div>
+    <div class="card"><span class="tag">Data · Infra</span><h4>MySQL · JWT · Multer</h4><p>정규화 DB · 인증 · 파일 업로드.</p></div>
+  </div>
+  <div class="callout rv">
+    <div class="ttl">DB 설계 · 7개 핵심 테이블</div>
+    <p style="font-size:14px;margin-bottom:10px" class="mono">counselors · clients · sessions · emotion_maps · emotion_analysis_reports · counselor_clients · recordings</p>
+    <p style="font-size:14px">상담사–내담자 <strong>다대다 관계를 counselor_clients 매핑 테이블</strong>로 처리하고, 감정 분석 결과는 세션·문장 단위로 저장해 감정 파도/레이더 시각화에 재사용했습니다.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">06</span> Results · Learnings</div>
+  <h2 class="s-title rv">검증 결과와 배운 것</h2>
+  <div class="checks rv">
+    <div class="check"><span class="mk">✓</span><span>회원가입/로그인 — JWT 토큰 정상 발급 확인</span></div>
+    <div class="check"><span class="mk">✓</span><span>세션·파일 업로드 — 녹음 파일 정상 처리·저장 확인</span></div>
+    <div class="check"><span class="mk">✓</span><span>감정 분석 — OpenAI API 통한 요약·분류 생성 확인</span></div>
+    <div class="check"><span class="mk">✓</span><span>PDF 변환 — 상담 결과 PDF 변환·다운로드 확인</span></div>
+  </div>
+  <div class="take rv">
+    <div class="tk"><h4>사용자 문제에서 출발하는 설계</h4><p>현장 인터뷰 → 요구사항 → DB 설계 → API로 이어지는 과정을 통해, 기술이 사용자의 실제 문제를 어떻게 풀어야 하는지 배웠습니다.</p></div>
+    <div class="tk hl"><h4>검증 기반 기술 의사결정</h4><p>"모델이 좋다"가 아니라 "우리 데이터에서 잘 동작하는가"를 기준으로 KoBERT→OpenAI 전환을 주도하며, 근거를 갖고 기술을 선택하는 감각을 익혔습니다.</p></div>
+    <div class="tk"><h4>유지보수 가능한 API 설계</h4><p>계층형 아키텍처와 DTO/Entity 분리를 실제 프로젝트에 적용하며 확장 가능한 서버 설계 감각을 익혔습니다.</p></div>
+  </div>
+  <div class="checks rv" style="margin-top:22px">
+    <div class="check"><span class="mk">›</span><span><b>향후 방향</b> — 실시간 감정 분석 고도화 · 모바일 앱 확장 · AWS EC2·S3 클라우드 정식 배포</span></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fnote">내담자의 마음을 읽어, 상담사가 상담에만 집중하도록.</div>
+  <div class="fmeta">마음읽기 · 2024 캡스톤디자인 Team 7 · Backend 박지호<br>Node.js · Express · MySQL · OpenAI API · Naver Clova STT</div>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body></html>
