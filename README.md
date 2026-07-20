@@ -40,7 +40,7 @@ KoBERT → OpenAI API 전환 주도: "모델이 좋은가"가 아니라 "우리 
 Backend	Node.js · Express · Spring Boot · Flask
 Database	MySQL
 AI · Data	OpenAI API · YOLO · OpenCV · Naver Clova STT
-Infra · Etc	JWT · Multer · Kafka · Amplitude
+Infra · Etc	JWT · Amplitude
 
 
 📬 Contact
