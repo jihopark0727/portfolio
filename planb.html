@@ -330,8 +330,75 @@ NSM = alternative_selected  <span class="kw">(버튼 탭)</span>
   </div>
 </div></section>
 
+
 <section><div class="wrap">
-  <div class="eyebrow rv"><span class="num">05</span> Impact</div>
+  <div class="eyebrow rv"><span class="num">05</span> Business Model</div>
+  <h2 class="s-title rv">기능이 아니라, <span class="hl">수익 구조</span>까지 설계했다</h2>
+  <p class="lead rv">아이디어에서 멈추지 않았다. 과금 구조와 단위경제를 직접 설계했고, 핵심은 <strong>실제 추천 API를 뜯어 원가의 정체를 밝힌 것</strong>이었다. 한 번 분석한 장소는 DB에 영속화되어, 다음 검색부터 비용이 들지 않는다.</p>
+
+  <div class="callout rv">
+    <div class="ttl">설계 원칙 · 무료의 핵심 가치는 잠그지 않는다</div>
+    <div class="row"><div class="lb">원칙</div><div class="tx">프리미엄을 <b>'횟수 해제'가 아니라 '새로운 능력'</b>으로 과금했다. 기존 무료 기능을 막아 수익을 만들면 Activation 자체가 무너지기 때문이다.</div></div>
+  </div>
+
+  <div class="feat rv">
+    <div class="fcard"><span class="fn">FREE</span><h4>무료</h4><p>핵심 4기능 + mood 학습 · 대안검색 월 10회 (첫 여행 15회 체험)</p><div class="delta">혼잡도·예측·리포트 <em>미포함</em></div></div>
+    <div class="fcard"><span class="fn">TRIP PASS</span><h4>₩4,900 / 7일</h4><p>대안검색 무제한(공정사용 100회) + 혼잡도 필터 + 선제 예측 알림 + 패턴 리포트</p><div class="delta">여행 1건 <em>= 1시즌</em></div></div>
+    <div class="fcard"><span class="fn">ANNUAL</span><h4>₩29,900 / 년</h4><p>무제한 여행 + Trip Pass 전 혜택</p><div class="delta">연 4회+ <em>헤비 여행자</em></div></div>
+  </div>
+
+  <h3 class="bm-sub rv">원가의 정체를 찾다</h3>
+  <p class="rv">대안찾기·틈새 시간·날씨 대안은 모두 <strong>같은 엔진</strong>이다. 근처 약 20개 후보를 모아 각각을 GPT로 분류하고, 리뷰·거리로 랭킹해 상위 5곳을 제시한다.</p>
+  <div class="code rv"><span class="cm">// 추천 엔진 파이프라인</span>
+Nearby Search <span class="kw">→</span> 20개 후보
+  <span class="kw">→</span> GPT-4o-mini × 20 (mood / space / type 분류)
+  <span class="kw">→</span> 리뷰·거리 가중 랭킹 <span class="kw">→</span> 상위 5곳 제시</div>
+  <p class="rv"><strong>발견:</strong> GPT를 20번 돌려도 비용은 거의 오르지 않았다(20콜 ≈ ₩10). 진짜 비용은 <strong>20개 장소의 리뷰 상세 조회(Place Details)</strong>였다. 원가를 좌우하는 건 AI가 아니라 외부 API 호출 횟수였던 것이다.</p>
+
+  <div class="roles rv">
+    <div class="role"><div class="rn">조치 1</div><div><h4>분류는 값싼 데이터로</h4><p>20개 후보의 mood/type 분류는 <strong>Nearby 응답 필드와 DB 캐시</strong>만으로 처리.</p></div></div>
+    <div class="role"><div class="rn">조치 2</div><div><h4>비싼 호출은 최종 후보만</h4><p>리뷰 Details는 20곳 전부가 아니라 <strong>최종 5곳에만</strong> 호출.</p></div></div>
+    <div class="role"><div class="rn">조치 3</div><div><h4>한 번 분석하면 재사용</h4><p>mood/type 매핑을 <strong>DB에 영속화</strong>해 재검색 시 추가 비용 0원.</p></div></div>
+  </div>
+
+  <table class="bmtable rv">
+    <thead><tr><th>시나리오</th><th>리뷰 Details 호출</th><th>검색 1회 단가</th></tr></thead>
+    <tbody>
+      <tr><td>콜드 · 20개 전부 호출</td><td>20곳</td><td class="c">≈ ₩600</td></tr>
+      <tr class="hi"><td>권장 · 최종 5개만 호출</td><td>5곳</td><td class="c">≈ ₩190</td></tr>
+      <tr><td>웜 · 대부분 DB 캐시</td><td>0–2곳</td><td class="c">≈ ₩60</td></tr>
+    </tbody>
+  </table>
+  <p class="rv" style="margin-top:14px"><strong>데이터 네트워크 효과.</strong> 장소 DB가 채워질수록 웜 비율이 올라가고 검색 단가는 계속 떨어진다. 쌓인 데이터가 그대로 원가 경쟁력이 되는 구조다. 실제 단가는 <span class="mono">cost_per_search</span> 이벤트에 <span class="mono">details_call_count</span>를 함께 로깅해 추적하도록 설계했다.</p>
+
+  <h3 class="bm-sub rv">만들기 전에, 수요부터 검증한다</h3>
+  <div class="grid2 rv">
+    <div class="card"><span class="tag">Fake Door</span><h4>수요가 진짜 있는가</h4><p>'혼잡도 필터(Pass)' 버튼을 먼저 노출하고 <strong>premium_view 클릭률</strong>로 실수요를 측정.</p></div>
+    <div class="card"><span class="tag">WTP 설문</span><h4>얼마면 살 것인가</h4><p>'여행 1회 얼마 / 연간 얼마'를 물어 <strong>가격 수용 구간</strong>을 파악.</p></div>
+    <div class="card"><span class="tag">사용 빈도</span><h4>자주 필요한 기능인가</h4><p><span class="mono">sos_triggered</span>의 인파밀집 비중과 검색량 분포로 혼잡도 기능의 필요 빈도를 확인.</p></div>
+    <div class="card"><span class="tag">가격 A/B</span><h4>최적 가격은 얼마인가</h4><p>베타 이후 <strong>₩3,900 / 4,900 / 5,900</strong> 가격 민감도 실험.</p></div>
+  </div>
+  <p class="rv" style="margin-top:16px;font-size:14px;color:var(--ink-mute)">※ 위 단가는 실제 API 호출 구조를 바탕으로 산출한 <strong style="color:var(--ink-soft)">설계 단계의 추정치</strong>다(환율 ₩1,380 기준). 서비스는 베타 검증 단계까지 진행했으며, 실매출은 발생하지 않았다.</p>
+</div></section>
+
+<style>
+.bm-sub{font-size:20px;font-weight:800;letter-spacing:-0.03em;margin:34px 0 12px;color:var(--ink)}
+.bmtable{width:100%;border-collapse:collapse;margin-top:24px;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14.5px}
+.bmtable th{text-align:left;padding:13px 18px;background:rgba(255,255,255,.03);
+  font-family:'Space Mono','Roboto Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-mute);font-weight:700;border-bottom:1px solid var(--line)}
+.bmtable td{padding:13px 18px;border-top:1px solid var(--line);color:var(--ink-soft)}
+.bmtable tbody tr:first-child td{border-top:none}
+.bmtable td.c{font-family:'Space Mono','Roboto Mono',monospace;font-weight:700;color:var(--ink)}
+.bmtable tr.hi{background:var(--accent-soft)}
+.bmtable tr.hi td{color:var(--ink)}
+.bmtable tr.hi td.c{color:var(--accent)}
+@media(max-width:720px){.bmtable{font-size:13px}.bmtable th,.bmtable td{padding:10px 12px}}
+</style>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">06</span> Impact</div>
   <h2 class="s-title rv">가설을 세우고, <span class="hl">숫자로 증명했다</span></h2>
   <div class="grid3 rv">
     <div class="card"><div class="big">42%→61%</div><div class="big-sub">대안 교체 전환율 (+19%p)</div></div>
@@ -344,7 +411,7 @@ NSM = alternative_selected  <span class="kw">(버튼 탭)</span>
 </div></section>
 
 <section><div class="wrap">
-  <div class="eyebrow rv"><span class="num">06</span> Reflection</div>
+  <div class="eyebrow rv"><span class="num">07</span> Reflection</div>
   <h2 class="s-title rv">배운 것</h2>
   <div class="take rv">
     <div class="tk"><h4>지표가 개선을 만든다</h4><p>'실제 교체'를 NSM으로 잡지 않았다면 42%의 누수를 발견하지 못했을 것이다. 무엇을 세느냐가 무엇을 고칠지를 결정한다.</p></div>
