@@ -1,6 +1,11 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
 <title>박지호 · 포트폴리오</title>
+<meta name="description" content="개발을 이해하는 기획자 박지호의 포트폴리오. 문제 정의부터 지표·수익 구조 설계, 직접 구현과 검증까지 다섯 개 프로젝트 사례를 담았습니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="박지호 · 포트폴리오">
+<meta property="og:description" content="개발을 이해하는 기획자 박지호의 포트폴리오. 문제 정의부터 지표·수익 구조 설계, 직접 구현과 검증까지 다섯 개 프로젝트 사례를 담았습니다.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -197,6 +202,7 @@ footer .fmeta a{color:var(--accent);text-decoration:none}
 /* reveal animation */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}
   .draw{stroke-dashoffset:0 !important;animation:none !important}}
 
@@ -316,17 +322,20 @@ body{background:#0a0d12}
 .tcard .btns{display:flex;flex-wrap:wrap;gap:8px}
 .tcard .btns span{font-size:13.5px;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--accent-line);color:var(--ink)}
 .tcard .btns span.p{background:var(--accent);border-color:var(--accent);color:#0b0912}
-.odays{display:flex;gap:8px;margin-bottom:14px}
-.odays span{flex:1;text-align:center;padding:8px 0;border-radius:10px;border:1px solid var(--line);font-size:13.5px;color:var(--ink-mute);font-weight:700}
-.odays span.on{background:var(--accent);border-color:var(--accent);color:#110a09}
-.otask{display:grid;grid-template-columns:22px 1fr auto;gap:14px;align-items:center;padding:14px 4px;border-top:1px solid var(--line)}
-.otask .box{width:18px;height:18px;border-radius:5px;border:2px solid var(--accent)}
-.otask b{display:block;font-size:15.5px;font-weight:750;color:var(--ink);letter-spacing:-0.02em}
-.otask small{font-size:12.5px;color:var(--ink-mute)}
-.otask .guide{font-size:12.5px;font-weight:700;color:var(--accent);padding:6px 12px;border:1px solid var(--accent-line);border-radius:999px;white-space:nowrap}
-@media(max-width:720px){.mockpanel{padding:18px 16px}.otask{grid-template-columns:22px 1fr}.otask .guide{grid-column:2;justify-self:start}}
-</style><!-- 방문 기록: GoatCounter. 아래 jiho를 본인 GoatCounter 코드로 바꾸세요 -->
-<script data-goatcounter="https://jiho.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+.okan{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ocol{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:8px;align-content:start}
+.ocol h5{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--ink-soft);font-weight:700}
+.ocol h5 i{font-style:normal;color:var(--ink-mute)}
+.ogrp{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px}
+.ocard{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 11px;display:grid;gap:7px}
+.ocard b{font-size:13.5px;font-weight:750;color:var(--ink);letter-spacing:-0.02em}
+.ocard.done b{color:var(--ink-mute);text-decoration:line-through}
+.otags{display:flex;flex-wrap:wrap;gap:6px}
+.otags span{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-mute)}
+.otags .dd{background:var(--accent);border-color:var(--accent);color:#110a09;font-weight:800}
+.otags .ck{border-color:var(--accent-line);color:var(--accent)}
+@media(max-width:720px){.mockpanel{padding:18px 16px}.okan{grid-template-columns:1fr}}
+</style><script data-goatcounter="https://jiho.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body>
 
 <header class="cover" id="top">
@@ -343,7 +352,7 @@ body{background:#0a0d12}
     <nav class="idx rv">
       <a class="row c1" href="#triage"><div class="n">01</div>
         <div><div class="t">메일 트리아지봇<span class="role">기획과 개발 전 과정</span></div>
-          <div class="d">사내 업무 자동화. 외부 요청 메일의 접수부터 Jira 티켓 생성까지 Slack 안에서 끝내는 봇</div></div>
+          <div class="d">사내 업무 자동화. 외부 요청 메일의 접수부터 담당자 지정, Jira 티켓 생성·기존 이슈 연결까지 Slack 안에서 끝내는 봇</div></div>
         <div class="pg">사내 프로젝트, 2026</div></a>
       <a class="row c2" href="#opsboard"><div class="n">02</div>
         <div><div class="t">OPS-BOARD<span class="role">직접 제작</span></div>
@@ -371,19 +380,19 @@ body{background:#0a0d12}
 <div class="doc theme-triage" id="triage"><div class="bg-field"></div><header class="hero"><div class="wrap">
   <div class="eyebrow rv">사내 업무 자동화, 2026, 재직 중인 회사의 기획팀</div>
   <h1 class="rv">요청 메일이<br><span class="hl">Slack 안에서</span> 끝나도록</h1>
-  <p class="sub rv">메일 트리아지봇은 외부 요청 메일을 LLM으로 분석하고 정리해 Slack 카드로 올리고, <strong>담당자 지정부터 내부 처리, Jira 티켓 생성까지 Slack 안에서 끝내는</strong> 사내 업무 자동화 봇입니다. 요구사항 정의부터 설계, 구현, 테스트, 배포, 운영 이슈 대응까지 전 과정을 맡았습니다.</p>
+  <p class="sub rv">메일 트리아지봇은 외부 요청 메일을 LLM으로 분석하고 정리해 Slack 카드로 올리고, <strong>담당자 지정부터 내부 처리, Jira 티켓 생성, 기존 이슈 연결까지 Slack 안에서 끝내는</strong> 사내 업무 자동화 봇입니다. 요구사항 정의부터 설계, 구현, 테스트, 배포, 운영 이슈 대응까지 전 과정을 맡았습니다.</p>
 
 <div class="stage rv">
   <div class="mockpanel">
-    <div class="mockhead"><span>요청 채널에 올라오는 카드</span><span class="ex">예시 화면, 실제 데이터 아님</span></div>
+    <div class="mockhead"><span>요청 채널의 카드 · 담당자 지정 후</span><span class="ex">예시 화면, 실제 데이터 아님</span></div>
     <div class="tcard">
       <div class="tags"><span>의도: 요청</span><span>신뢰도: 높음</span></div>
       <div class="tt">이벤트 페이지 문구 수정 요청</div>
       <div class="tb">금요일 오픈 전까지 배너 문구 2곳 수정을 요청함. 첨부 이미지 1건.</div>
-      <div class="ta">담당자 <i>선택하세요 ▾</i></div>
-      <div class="btns"><span class="p">완료 처리</span><span>티켓 생성</span><span>취소</span></div>
+      <div class="ta">담당자 <i>지정 완료 ▾</i></div>
+      <div class="btns"><span class="p">완료 처리</span><span>티켓 생성</span><span>기존 프로젝트 연결</span><span>원문 보기</span><span>취소</span></div>
     </div>
-    <div class="mockfoot"><span>세 버튼은 AI 판단과 무관하게 <b>항상 노출</b></span><span>실패하면 사람에게 확인요망 알림</span></div>
+    <div class="mockfoot"><span>버튼은 AI 판단과 무관하게 <b>항상 노출</b></span><span>초안 단계에서는 담당자 드롭다운과 [무시]만 노출</span></div>
   </div>
 </div>
   <div class="chips rv">
@@ -391,11 +400,12 @@ body{background:#0a0d12}
     <span class="chip">기간 <b>2026.08–10</b>, 이후 계속 업데이트 중</span>
     <span class="chip">Node.js, TypeScript, Slack Bolt</span>
     <span class="chip">Claude API, Jira, Gmail API</span>
+    <span class="chip">AWS EC2, systemd</span>
   </div>
   <div class="metrics rv">
-    <div class="metric"><div class="k">설계 원칙</div><div class="v">누락 <em>0</em></div></div>
-    <div class="metric"><div class="k">사람이 고르는 경로</div><div class="v"><em>3</em>갈래</div></div>
-    <div class="metric"><div class="k">테스트</div><div class="v"><em>443</em>개</div><div class="note">전체 통과</div></div>
+    <div class="metric"><div class="k">설계 원칙</div><div class="v">누락 <em>0</em></div><div class="note">목표로 삼은 기준</div></div>
+    <div class="metric"><div class="k">사람이 고르는 경로</div><div class="v"><em>4</em>갈래</div><div class="note">완료 · 티켓 · 연결 · 무시</div></div>
+    <div class="metric"><div class="k">테스트</div><div class="v"><em>512</em>개</div><div class="note">전체 통과</div></div>
     <div class="metric"><div class="k">typecheck</div><div class="v"><em>통과</em></div><div class="note">운영 반영 기준</div></div>
   </div>
 </div></header>
@@ -412,8 +422,8 @@ body{background:#0a0d12}
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">02</span> Principle</div>
-  <h2 class="s-title rv">원칙은 하나, <span class="hl">누락 0</span></h2>
-  <p class="lead rv">프로젝트 전체를 하나의 원칙으로 묶었습니다. <strong>어떤 실패 경로도 조용히 버리지 않는다.</strong> 무엇이 실패하든 반드시 사람에게 확인요망 알림이 가도록 모든 예외 처리를 설계했습니다.</p>
+  <h2 class="s-title rv">원칙은 하나, <span class="hl">누락 0</span>을 목표로</h2>
+  <p class="lead rv">프로젝트 전체를 누락 0을 목표로 한 설계 원칙 하나로 묶었습니다. <strong>어떤 실패 경로도 조용히 버리지 않는다.</strong> 무엇이 실패하든 반드시 사람에게 확인요망 알림이 가도록 모든 예외 처리를 설계했습니다.</p>
   <div class="checks rv">
     <div class="check"><span class="mk">›</span><span><b>티켓 생성이 실패하면</b> 사람에게 확인요망 알림</span></div>
     <div class="check"><span class="mk">›</span><span><b>LLM 분석이 실패하면</b> 사람에게 확인요망 알림</span></div>
@@ -430,13 +440,16 @@ body{background:#0a0d12}
     <div class="role"><div class="rn">01</div><div><h4>메일 수신</h4><p>Gmail API로 요청 메일을 자동 수집합니다.</p></div></div>
     <div class="role"><div class="rn">02</div><div><h4>분석</h4><p>LLM이 메일의 의도와 신뢰도를 판단하고, 규칙 기반 필터가 기준점 역할을 합니다.</p></div></div>
     <div class="role"><div class="rn">03</div><div><h4>Slack 카드</h4><p>정리된 요청이 채널에 카드로 올라옵니다.</p></div></div>
-    <div class="role"><div class="rn">04</div><div><h4>담당자 지정</h4><p>카드 안의 드롭다운에서 담당자를 고릅니다.</p></div></div>
-    <div class="role"><div class="rn">05</div><div><h4>사람이 결정</h4><p>세 버튼 가운데 하나를 누릅니다. 버튼은 <strong>AI 판단과 상관없이 항상</strong> 보입니다.</p></div></div>
+    <div class="role"><div class="rn">04</div><div><h4>담당자 지정</h4><p>초안 카드에는 담당자 드롭다운과 [무시] 버튼만 보입니다. 처리할 필요가 없는 메일은 여기서 [무시]로 종결하고, 나머지는 드롭다운에서 담당자를 고릅니다.</p></div></div>
+    <div class="role"><div class="rn">05</div><div><h4>사람이 결정</h4><p>담당자가 지정되면 처리 버튼이 나타나고, 그중 하나를 누릅니다. 버튼은 <strong>AI 판단과 상관없이 항상</strong> 보입니다.</p></div></div>
   </div>
   <div class="grid3 rv">
-    <div class="card"><span class="tag">버튼 1</span><h4>완료 처리</h4><p>기획팀 안에서 끝나는 업무.</p></div>
-    <div class="card"><span class="tag">버튼 2</span><h4>티켓 생성</h4><p>다른 팀과 협업이 필요한 요청을 Jira로 등록.</p></div>
-    <div class="card"><span class="tag">버튼 3</span><h4>취소</h4><p>처리할 필요가 없는 건.</p></div>
+    <div class="card"><span class="tag">초안 단계</span><h4>무시</h4><p>처리할 필요가 없는 메일을 담당자 지정 없이 종결.</p></div>
+    <div class="card"><span class="tag">담당자 지정 후</span><h4>완료 처리</h4><p>기획팀 안에서 끝나는 업무. 기존 프로젝트에 연결한 건의 마무리도 이 버튼으로 합니다.</p></div>
+    <div class="card"><span class="tag">담당자 지정 후</span><h4>티켓 생성</h4><p>다른 팀과 협업이 필요한 요청을 Jira로 등록.</p></div>
+    <div class="card"><span class="tag">담당자 지정 후</span><h4>기존 프로젝트 연결</h4><p>다른 팀이 쓰는 기존 칸반 프로젝트의 이슈에 메일을 연결.</p></div>
+    <div class="card"><span class="tag">담당자 지정 후</span><h4>원문 보기</h4><p>정리된 카드와 함께 메일 원문을 확인.</p></div>
+    <div class="card"><span class="tag">담당자 지정 후</span><h4>취소</h4><p>종결이 아니라 담당자 지정만 취소하고 초안으로 되돌립니다.</p></div>
   </div>
 </div></section>
 
@@ -447,15 +460,15 @@ body{background:#0a0d12}
   <div class="checks rv">
     <div class="check"><span class="mk">›</span><span><b>LLM의 역할</b>은 메일의 의도(요청, 대화, 후속 질문 등)와 신뢰도 판단까지입니다.</span></div>
     <div class="check"><span class="mk">›</span><span><b>규칙 기반 필터</b>를 기준점으로 남겨, LLM이 틀려도 파이프라인 전체가 흔들리지 않게 했습니다.</span></div>
-    <div class="check"><span class="mk">›</span><span><b>세 버튼은 항상 노출</b>됩니다. 자동 판단 때문에 처리 경로가 사라지는 일을 구조적으로 막았습니다.</span></div>
+    <div class="check"><span class="mk">›</span><span><b>처리 버튼은 항상 노출</b>됩니다. 자동 판단 때문에 처리 경로가 사라지는 일을 구조적으로 막았습니다.</span></div>
     <div class="check"><span class="mk">›</span><span><b>결정 로그와 리포트</b>로 봇의 판단과 사람의 최종 결정을 대조해, 분류 정확도를 수치로 재고 프롬프트를 계속 고칠 수 있는 구조를 갖췄습니다.</span></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">05</span> Iteration</div>
-  <h2 class="s-title rv">쓰면서 <span class="hl">다섯 번</span> 고쳤습니다</h2>
-  <p class="lead rv">처음 설계가 그대로 남은 곳은 많지 않습니다. 실제 사용에서 확인한 사실에 맞춰 흐름과 구조를 바꿨습니다.</p>
+  <h2 class="s-title rv">쓰면서 <span class="hl">여덟 번</span> 고쳤습니다</h2>
+  <p class="lead rv">처음 설계가 그대로 남은 곳은 많지 않습니다. 실제 사용에서 확인한 사실과 팀원 피드백에 맞춰 흐름과 구조, 운영 환경까지 바꿨습니다.</p>
   <div class="grid2 rv">
     <div class="callout" style="margin-top:0"><div class="ttl">처리 흐름 재설계</div>
       <div class="row"><div class="lb">처음</div><div class="tx">승인하면 곧바로 티켓을 만드는 구조.</div></div>
@@ -471,6 +484,28 @@ body{background:#0a0d12}
     <div class="role"><div class="rn">경합</div><div><h4>저장 직전 재조회 후 병합</h4><p>백그라운드 이미지 업로드가 낡은 데이터로 저장소를 덮어써, 방금 저장된 담당자 지정 정보가 지워졌습니다. <strong>저장 직전에 최신 상태를 다시 조회해 병합</strong>하도록 고쳤습니다.</p></div></div>
     <div class="role"><div class="rn">손상</div><div><h4>원자적 쓰기로 통일</h4><p>파일을 쓰는 도중 프로세스가 죽으면 데이터가 손상됐습니다. 모든 저장을 <strong>임시 파일에 쓴 뒤 rename</strong>하는 방식으로 통일했습니다.</p></div></div>
   </div>
+  <div class="callout rv">
+    <div class="ttl">알림 피로 → 하루 세 번 목록 알림</div>
+    <div class="row"><div class="lb">처음</div><div class="tx">카드마다 스레드에 개별 리마인더를 달았습니다(업무시간 2시간 뒤, 24시간 뒤).</div></div>
+    <div class="row"><div class="lb">발견</div><div class="tx">팀원에게서 <b>"알림이 너무 많다"</b>는 피드백을 받았습니다.</div></div>
+    <div class="row"><div class="lb">변경</div><div class="tx">평일 09:30, 13:30, 17:00(한국시간)에 아직 처리되지 않은 카드를 <b>채널 메시지 한 건으로 모아</b> 알리도록 바꿨습니다. 담당자 미지정 건은 팀 전체에, 처리 중인 건은 담당자별로 묶어 <b>해당 담당자만 멘션</b>하고, 카드 바로가기 링크와 경과 시간을 함께 보여 줍니다.</div></div>
+    <div class="row"><div class="lb">기준</div><div class="tx">무시·완료된 건과 올라온 지 1시간이 안 된 카드는 제외합니다. 건수가 많으면 오래된 순으로 30건만 보여 주고, 대기 건이 없으면 보내지 않습니다.</div></div>
+    <div class="row"><div class="lb">안전장치</div><div class="tx">마지막 발송 회차를 저장해 재시작해도 중복 발송이 없습니다. 발송에 실패하면 조용히 버리지 않고 다음 폴링에서 다시 시도해, <b>누락 0 원칙</b>을 알림에도 그대로 적용했습니다.</div></div>
+  </div>
+  <div class="callout rv">
+    <div class="ttl">기존 프로젝트 연결</div>
+    <div class="row"><div class="lb">배경</div><div class="tx">다른 팀이 쓰는 기존 칸반 프로젝트는 필드 체계가 확정되지 않아, 봇이 티켓을 새로 만들면 잘못된 값으로 생성될 위험이 있었습니다.</div></div>
+    <div class="row"><div class="lb">설계</div><div class="tx">그래서 티켓을 새로 만들지 않고 <b>이미 있는 이슈에 메일을 연결</b>만 하도록 했습니다. 연결은 종결이 아니므로, 마무리는 기존 [완료 처리]를 재사용했습니다.</div></div>
+    <div class="row"><div class="lb">안전장치</div><div class="tx">번호 오타로 전혀 다른 이슈에 붙는 사고를 막기 위해, 번호를 입력하면 <b>그 이슈의 제목을 보여 주는 확인 팝업</b>을 한 번 더 거치게 했습니다.</div></div>
+    <div class="row"><div class="lb">변경</div><div class="tx">처음에는 채널에 확인 메시지를 새로 띄웠지만, <b>"새 메시지로 확인시키지 말아 달라"</b>는 피드백을 받아 팝업 안에서 처리하도록 바꿨습니다. 이 과정에서 확인 후 팝업이 닫히지 않는 문제를 찾아 고쳤고, 그 사이 담당자 지정이 취소되는 경합도 막았습니다.</div></div>
+  </div>
+  <div class="callout rv">
+    <div class="ttl">운영 전환: 개인 PC에서 AWS 서버로</div>
+    <div class="row"><div class="lb">처음</div><div class="tx">개인 PC에서 구동해, PC가 꺼지면 봇도 멈췄습니다.</div></div>
+    <div class="row"><div class="lb">변경</div><div class="tx">AWS 서버(EC2)로 옮기고 <b>systemd</b>에 등록해 24시간 상시 가동하고, 장애가 나면 자동으로 재기동되게 했습니다.</div></div>
+    <div class="row"><div class="lb">분리</div><div class="tx">개발과 운영의 Slack 앱, Jira 프로젝트, 데이터 파일까지 분리해 <b>개발 중 테스트가 운영에 섞이지 않게</b> 했습니다.</div></div>
+    <div class="row"><div class="lb">전환</div><div class="tx">같은 Slack 앱 토큰으로 두 인스턴스가 동시에 돌면 클릭 이벤트가 갈라지기 때문에, 기존 구동을 먼저 멈춘 뒤 새 서버로 전환했습니다.</div></div>
+  </div>
 </div></section>
 
 <section><div class="wrap">
@@ -480,7 +515,7 @@ body{background:#0a0d12}
     <div class="ttl">간헐적으로 초안이 유실된 것처럼 보이는 버그</div>
     <div class="row"><div class="lb">증상</div><div class="tx">정상적인 초안이 간헐적으로 사라진 것처럼 보였습니다. 파일 재읽기, 재시도 로직 같은 방어 코드를 여러 번 넣었지만 <b>재현될 때마다 그 코드가 실행된 흔적이 전혀 없었습니다.</b></div></div>
     <div class="row"><div class="lb">판단</div><div class="tx">애플리케이션 로직의 문제가 아닐 가능성이 높다고 봤습니다. 원인이 불확실한 상태에서 방어 코드를 계속 쌓는 것은 답이 아니었습니다.</div></div>
-    <div class="row"><div class="lb">조치</div><div class="tx"><b>문제가 생기는 경로 자체를 줄였습니다.</b> 담당자 지정 취소를 종결 상태를 거쳐 되돌아오는 방식에서 하나의 동작으로 다시 구성했습니다.</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx"><b>문제가 생기는 경로 자체를 줄였습니다.</b> 종결 상태를 거쳐 되돌아오던 '담당자 지정 취소'를 하나의 동작으로 다시 구성했습니다.</div></div>
     <div class="quote-line">원인을 끝까지 확정하지 못했더라도, 실질적인 위험을 낮추는 쪽을 택했습니다.</div>
   </div>
 </div></section>
@@ -489,71 +524,171 @@ body{background:#0a0d12}
   <div class="eyebrow rv"><span class="num">07</span> Results, Learnings</div>
   <h2 class="s-title rv">결과와 배운 것</h2>
   <div class="checks rv">
-    <div class="check"><span class="mk">✓</span><span>테스트 443개와 typecheck가 모두 통과한 상태로 운영에 반영</span></div>
+    <div class="check"><span class="mk">✓</span><span>테스트 512개와 typecheck가 모두 통과한 상태로 운영에 반영</span></div>
     <div class="check"><span class="mk">✓</span><span>코드 리뷰에서 나온 잠재 결함(설정이 누락되면 전체 기능이 멈출 가능성 등)을 방어 로직으로 미리 보완</span></div>
     <div class="check"><span class="mk">✓</span><span>팀 안에서 끝나는 업무와 협업이 필요한 업무를 분리해, 불필요한 티켓 생성을 줄이고 협업이 필요한 요청의 처리 경로를 보장</span></div>
-    <div class="check"><span class="mk">✓</span><span>지금도 팀원 의견을 들으며 계속 업데이트 중</span></div>
+    <div class="check"><span class="mk">✓</span><span>AWS 서버(EC2)에서 24시간 상시 가동하고, 장애가 나면 자동으로 재기동</span></div>
+    <div class="check"><span class="mk">✓</span><span>목록 알림과 기존 프로젝트 연결의 확인 방식처럼, 팀원 피드백에서 나온 불편을 바로 구조에 반영하며 지금도 계속 개선하고 있습니다</span></div>
   </div>
   <div class="take rv">
     <div class="tk hl"><h4>완벽한 자동화보다, 빠르게 확인하고 넘어가는 설계</h4><p>실무에서는 사람이 빠르게 확인하고 넘어갈 수 있게 만드는 설계가 더 중요했습니다. 리뷰 코멘트와 실제 사용 중에 나온 예외 상황을 반영해 기능을 반복해서 고치면서 체감했습니다.</p></div>
     <div class="tk"><h4>누가 무엇을 결정하는지가 결과를 좌우한다</h4><p>기술을 고르는 일보다, AI와 사람 사이에서 결정의 경계를 정하는 일이 더 어려웠고 더 중요했습니다.</p></div>
+    <div class="tk"><h4>알림은 많을수록 안전한 게 아니다</h4><p>누락을 막으려고 카드마다 리마인더를 달았지만, 돌아온 피드백은 "알림이 너무 많다"였습니다. 알림을 늘리는 것보다, 사람이 실제로 보게 만드는 쪽이 누락을 줄인다는 것을 배웠습니다. 그래서 정해진 시간에 한 건으로 모으고, 처리해야 할 사람만 부르도록 바꿨습니다.</p></div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="fnote">어떤 실패도 조용히 사라지지 않게.</div>
-  <div class="fmeta">메일 트리아지봇, 사내 업무 자동화, 기획과 개발 박지호<br>Node.js, TypeScript, Slack Bolt, Claude API, Jira REST API, Gmail API</div>
+  <div class="fmeta">메일 트리아지봇, 사내 업무 자동화, 기획과 개발 박지호<br>Node.js, TypeScript, Slack Bolt, Claude API, Jira REST API, Gmail API, AWS EC2, systemd</div>
 </div></footer></div>
 
 <div class="divider"><div class="wrap"><span class="cur">02 / OPS-BOARD</span><a href="#top">↑ 목차로</a></div></div>
 <div class="doc theme-ops" id="opsboard"><div class="bg-field"></div><header class="hero"><div class="wrap">
   <div class="eyebrow rv">사내 운영 도구, 2026, 재직 중인 회사</div>
   <h1 class="rv">정기 업무를<br><span class="hl">오늘 할 일</span>로</h1>
-  <p class="sub rv">OPS-BOARD는 매주 정해진 요일에 반복되는 보고와 데이터 추출 업무를 <strong>그날 해야 할 일로 띄워 주고, 가이드 문서를 함께 보여 주는</strong> 사내 운영 보드입니다. 직접 만들었습니다.</p>
+  <p class="sub rv">OPS-BOARD는 인수인계로 넘어온 정기 업무를 놓치지 않도록, <strong>주기마다 할 일을 카드로 띄워 주는</strong> 사내 운영 보드입니다. 기획부터 구현, 운영까지 직접 만들었습니다. 2주 POC로 리포팅 보드부터 열었고, 이후 업무 범위를 넓히면서 운영 중에 생긴 장애를 직접 진단하고 고쳤습니다.</p>
 
 <div class="stage rv">
   <div class="mockpanel">
-    <div class="mockhead"><span>오늘 해야 할 일</span><span class="ex">예시 화면, 실제 데이터 아님</span></div>
-    <div class="odays"><span>월</span><span class="on">화</span><span>수</span><span>목</span><span>금</span></div>
-    <div class="otask"><span class="box"></span><div><b>정기 보고</b><small>매주 정해진 요일</small></div><span class="guide">가이드 문서</span></div>
-    <div class="otask"><span class="box"></span><div><b>프로모션 데이터 추출</b><small>매주 정해진 요일</small></div><span class="guide">가이드 문서</span></div>
-    <div class="mockfoot"><span>해당 요일이 되면 <b>오늘 할 일</b>로 표시</span><span>업무마다 가이드 문서 연결</span></div>
+    <div class="mockhead"><span>OPS-BOARD · ‹ 이번 주 ›</span><span class="ex">예시 화면, 실제 데이터 아님</span></div>
+    <div class="okan">
+      <div class="ocol"><h5>대기 <i>3</i></h5>
+        <div class="ogrp">일간</div>
+        <div class="ocard"><b>일간 지표 점검</b><div class="otags"><span class="dd">D-day</span><span class="ck">체크 0/3</span></div></div>
+        <div class="ogrp">주간</div>
+        <div class="ocard"><b>주간 정기 보고</b><div class="otags"><span>D-2</span><span class="ck">가이드</span></div></div>
+        <div class="ogrp">월간</div>
+        <div class="ocard"><b>월간 리포트</b><div class="otags"><span>월 마지막 평일</span><span>D-5</span></div></div>
+      </div>
+      <div class="ocol"><h5>진행중 <i>2</i></h5>
+        <div class="ogrp">일간</div>
+        <div class="ocard"><b>일간 리포트 발송</b><div class="otags"><span class="dd">D-day</span><span class="ck">체크 1/2</span></div></div>
+        <div class="ogrp">주간</div>
+        <div class="ocard"><b>프로모션 데이터 추출</b><div class="otags"><span class="dd">D-day</span><span class="ck">체크 2/4</span></div></div>
+      </div>
+      <div class="ocol"><h5>완료 <i>1</i></h5>
+        <div class="ogrp">주간</div>
+        <div class="ocard done"><b>주간 데이터 정리</b><div class="otags"><span class="ck">체크 4/4</span></div></div>
+      </div>
+    </div>
+    <div class="mockfoot"><span>주기가 시작되면 카드를 <b>자동 생성</b></span><span>드래그로 상태 이동 · 마감이 가까우면 D-day 강조</span></div>
   </div>
 </div>
   <div class="chips rv">
-    <span class="chip">역할 <b>직접 제작</b></span>
+    <span class="chip">역할 <b>직접 제작</b> (기획·구현·운영)</span>
     <span class="chip">기간 <b>2026.08–10</b>, 이후 계속 업데이트 중</span>
-    <span class="chip">대상 <b>정기 보고, 데이터 추출</b></span>
+    <span class="chip">Node.js, Express, SQLite</span>
+    <span class="chip">React (Vite), node-cron, pm2</span>
+  </div>
+  <div class="metrics rv">
+    <div class="metric"><div class="k">POC</div><div class="v"><em>2</em>주</div><div class="note">리포팅 보드부터</div></div>
+    <div class="metric"><div class="k">정기 업무</div><div class="v">30<span class="arw">→</span><em>34</em>종</div><div class="note">registry 테스트 기준</div></div>
+    <div class="metric"><div class="k">리포팅 노출</div><div class="v">9<span class="arw">→</span><em>13</em>종</div><div class="note">registry 테스트 기준</div></div>
+    <div class="metric"><div class="k">자동 테스트</div><div class="v">73<span class="arw">→</span><em>98</em>개</div><div class="note">Vitest, 2026-09 기준</div></div>
   </div>
 </div></header>
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">01</span> Background</div>
   <h2 class="s-title rv">메일로 오는 일 말고, <span class="hl">요일마다 돌아오는 일</span>이 있습니다</h2>
-  <p class="lead rv">메일 트리아지봇이 맡는 것은 메일로 들어오는 요청입니다. 이와 별개로 <strong>매주 정해진 요일에 해야 하는 정기 업무</strong>가 있습니다. 정기 보고와 프로모션 데이터 추출 같은 일입니다.</p>
+  <p class="lead rv">메일 트리아지봇이 맡는 것은 메일로 들어오는 요청입니다. 이와 별개로 <strong>정해진 주기마다 해야 하는 정기 업무</strong>가 있습니다. 정기 보고와 프로모션 데이터 추출 같은 일입니다. 이 업무들은 인수인계로 넘어왔고, 주기도 일간, 주간, 월 첫 평일, 월 마지막 평일로 제각각이었습니다. 목표는 하나였습니다. 넘겨받은 업무를 하나도 놓치지 않는 것입니다.</p>
+  <div class="grid2 rv">
+    <div class="card"><span class="tag">범위 결정</span><h4>처음부터 다 만들지 않았습니다</h4><p>2주 POC로 <strong>리포팅 보드(리포팅 업무 9종)</strong>만 먼저 열었고, 이후 정기 업무 전반으로 범위를 넓혔습니다.</p></div>
+    <div class="card"><span class="tag">설정으로 선언</span><h4>업무는 코드가 아니라 설정에</h4><p>업무 정의는 YAML 설정으로 선언했습니다. 담당자 명단도 YAML로 분리해, 바뀌어도 <strong>재시작 없이</strong> 반영됩니다.</p></div>
+  </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">02</span> Solution</div>
   <h2 class="s-title rv">할 일과 하는 방법을 <span class="hl">한곳에서</span></h2>
+  <p class="lead rv">정기 업무는 주기가 되면 카드가 되고, 카드는 보드 위에서 끝까지 관리됩니다.</p>
   <div class="feat rv">
-    <div class="fcard"><span class="fn">01</span><h4>오늘 해야 할 일</h4><p>정기 업무를 보드에 올려 두고, 해당 요일이 되면 오늘 해야 할 일로 띄웁니다.</p></div>
-    <div class="fcard"><span class="fn">02</span><h4>가이드 문서</h4><p>업무마다 가이드 문서를 함께 넣어, 할 일과 처리 방법을 한곳에서 볼 수 있습니다.</p></div>
+    <div class="fcard"><span class="fn">01</span><h4>주기별 자동 카드화</h4><p>일간, 주간(요일 지정), 월 첫 평일, 월 마지막 평일을 지원합니다. 주기가 시작되면 그 주기의 카드를 한 번에 만듭니다.</p></div>
+    <div class="fcard"><span class="fn">02</span><h4>상태 칸반 · 주차 이동</h4><p>대기, 진행중, 완료 사이를 드래그로 옮깁니다. 주차를 이동해 지난주와 다음 주 보드도 봅니다.</p></div>
+    <div class="fcard"><span class="fn">03</span><h4>D-day · 체크리스트 · 가이드</h4><p>마감이 가까운 카드는 D-day로 강조합니다. 업무마다 체크리스트와 가이드 문서를 붙여, 할 일과 하는 방법을 함께 봅니다.</p></div>
+    <div class="fcard"><span class="fn">04</span><h4>담당자 지정 · 사후 수정</h4><p>카드에 담당자를 지정합니다. 업무 연결과 마감일은 나중에 바꿀 수 있습니다.</p></div>
+    <div class="fcard"><span class="fn">05</span><h4>아침 Slack 브리핑</h4><p>아침마다 Slack으로 보드 브리핑을 보냅니다.</p></div>
+    <div class="fcard"><span class="fn">06</span><h4>AI로 일정 만들기</h4><p>업무 원문을 붙여넣으면 AI가 일정을 추출하고, 사람이 확인한 뒤에 만듭니다.</p></div>
+  </div>
+  <div class="callout rv">
+    <div class="ttl">설계 원칙 · 몇 번 실행해도 같은 결과</div>
+    <div class="row"><div class="lb">멱등</div><div class="tx">업무 ID와 주기 키(period_key)에 <b>UNIQUE 인덱스</b>를 걸고 <b>INSERT OR IGNORE</b>로 카드를 만듭니다. 생성 로직을 몇 번 실행해도 같은 카드는 한 장만 생깁니다.</div></div>
+    <div class="quote-line">이 설계가 이후 장애 대응의 바탕이 됐습니다.</div>
   </div>
 </div></section>
 
 <section><div class="wrap">
-  <div class="eyebrow rv"><span class="num">03</span> Two Tools</div>
-  <h2 class="s-title rv">일이 생기는 방식에 따라 <span class="hl">도구를 나눴습니다</span></h2>
-  <div class="maps rv">
-    <div class="map"><div class="from">메일로 들어오는 일 (외부 거래처의 요청 메일)</div><div class="arw">→</div><div class="to">메일 트리아지봇</div></div>
-    <div class="map"><div class="from">정해진 요일마다 돌아오는 일 (정기 보고, 프로모션 데이터 추출)</div><div class="arw">→</div><div class="to">OPS-BOARD</div></div>
+  <div class="eyebrow rv"><span class="num">03</span> AI &amp; Human</div>
+  <h2 class="s-title rv">AI는 일정을 뽑고, <span class="hl">생성은 사람이 확인한 뒤에</span></h2>
+  <p class="lead rv">메일 트리아지봇과 같은 원칙을 적용했습니다. <strong>AI는 분석하고, 결정은 사람이 합니다.</strong></p>
+  <div class="roles rv">
+    <div class="role"><div class="rn">01</div><div><h4>원문 붙여넣기</h4><p>지라, 컨플루언스, 메일의 원문을 그대로 붙여넣습니다.</p></div></div>
+    <div class="role"><div class="rn">02</div><div><h4>AI 추출</h4><p>서버가 Claude CLI를 호출해 일정의 제목, 날짜, 메모를 뽑습니다.</p></div></div>
+    <div class="role"><div class="rn">03</div><div><h4>사람이 확인</h4><p>미리보기에서 사람이 확인하고 고친 뒤에만 <strong>일괄 생성</strong>합니다.</p></div></div>
+  </div>
+  <p class="rv" style="margin-top:22px">날짜를 잘못 읽으면 카드가 엉뚱한 날에 생깁니다. 그래서 사람 검토를 건너뛸 수 없는 필수 단계로 뒀습니다.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">04</span> Iteration · Troubleshooting</div>
+  <h2 class="s-title rv">운영하면서 고치고, <span class="hl">장애는 원인부터</span> 갈랐습니다</h2>
+  <p class="lead rv">처음 설계를 실제 업무와 운영 환경에 맞춰 바꿨습니다.</p>
+  <div class="roles rv">
+    <div class="role"><div class="rn">보안</div><div><h4>파일 첨부 제거</h4><p>파일 첨부 기능을 만들었지만 사내 보안 정책(DLP, 자료 반출 차단)과 맞지 않았습니다. 기능을 제거하고 <strong>카드와 메모 중심</strong>으로 운영하기로 했습니다.</p></div></div>
+    <div class="role"><div class="rn">모델링</div><div><h4>규칙으로 안 되는 일정</h4><p>분기 리포트(5주간 매주 월요일)와 월별 프로모션(요일이 불규칙하고, 기프티콘 지급 마일스톤이 따로 있음)은 "매주 X요일" 규칙으로 표현되지 않았습니다. 기존 일괄 업무를 교체하고, <strong>수동 트리거 업무와 날짜별 티켓</strong>으로 다시 모델링했습니다.</p></div></div>
+  </div>
+
+  <div class="callout rv">
+    <div class="ttl">월요일 정기 카드가 생기지 않은 날</div>
+    <div class="row"><div class="lb">증상</div><div class="tx">월요일 정기 카드 생성이 9/7, 9/14 연속으로 누락됐고, 9/21에도 늦게 생성됐습니다.</div></div>
+    <div class="row"><div class="lb">원인</div><div class="tx">서버가 도는 노트북이 절전에 들어가, 하루 1회 실행되는 크론이 제때 돌지 못했습니다.</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx">하루 1회 크론을 <b>매시 재확인 + 보드 조회 시점 재확인</b>으로 바꿨습니다. 카드 생성이 멱등이라, 여러 번 실행해도 중복이 생기지 않아 가능한 방법이었습니다.</div></div>
+  </div>
+
+  <div class="callout rv">
+    <div class="ttl">돌고 있는 줄 알았던 백업</div>
+    <div class="row"><div class="lb">증상</div><div class="tx">백업이 8/29 이후 약 2주간 중단돼 있었습니다. 남아 있던 백업도 <b>296건 중 229건</b>만 담겨 있었습니다.</div></div>
+    <div class="row"><div class="lb">원인</div><div class="tx">백업이 파일 복사 방식이었습니다. WAL 모드에서는 아직 DB 파일에 반영되지 않은 변경이 있어, 파일만 복사하면 일부가 빠집니다.</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx">SQLite 공식 <b>db.backup() API</b>로 교체했습니다.</div></div>
+    <div class="row"><div class="lb">검증</div><div class="tx">원본과 백업의 건수를 비교해 <b>296 = 296</b> 일치를 확인했습니다.</div></div>
+  </div>
+
+  <div class="callout rv">
+    <div class="ttl">외부 연동 장애, 두 갈래로 나눠 진단</div>
+    <div class="row"><div class="lb">증상</div><div class="tx">메일 연동과 AI 일정 추출, 두 외부 연동에서 장애가 났습니다.</div></div>
+    <div class="row"><div class="lb">원인</div><div class="tx">메일 연동 구글 스크립트 배포의 "액세스 거부"는 <b>외부 권한 문제</b>로 확정했습니다. Claude CLI는 <b>로그인 세션이 반복 만료</b>되고 있었습니다(9/1, 9/11, 9/16).</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx">Claude CLI는 1년짜리 장기 토큰 방식으로 전환했습니다. 메일 폴링은 트리아지봇과 중복되는 기능이라 비활성화했습니다.</div></div>
+  </div>
+
+  <div class="callout rv">
+    <div class="ttl">업무 연결을 끊을 수 없던 버그</div>
+    <div class="row"><div class="lb">증상</div><div class="tx">티켓의 업무 연결을 해제할 수 없었습니다.</div></div>
+    <div class="row"><div class="lb">원인</div><div class="tx">기존 코드 <span class="mono">task_id ?? card.task_id</span>가 null(연결 해제)을 '값 없음'으로 보고 기존 값을 그대로 썼습니다.</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx">연결 해제를 처리하도록 고쳤습니다. 연결이나 마감일이 바뀌면 <b>period_key를 다시 계산</b>해 스케줄러가 같은 카드를 또 만들지 않게 했고, 충돌하면 409로 응답합니다.</div></div>
+    <div class="row"><div class="lb">검증</div><div class="tx">회귀 테스트를 추가했습니다.</div></div>
+  </div>
+  <p class="rv" style="margin-top:18px;font-size:14px;color:var(--ink-mute)">이 밖에 환경설정 파일의 BOM/CRLF 파싱 버그를 바이트 단위로 확인해 고쳤습니다.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow rv"><span class="num">05</span> Results, Learnings</div>
+  <h2 class="s-title rv">결과와 배운 것</h2>
+  <div class="checks rv">
+    <div class="check"><span class="mk">✓</span><span>정기 업무 30종 → 34종, 리포팅 노출 9종 → 13종으로 확장 (registry 테스트 기준)</span></div>
+    <div class="check"><span class="mk">✓</span><span>자동 테스트 73개 → 98개 (Vitest, 2026-09 기준)</span></div>
+    <div class="check"><span class="mk">✓</span><span>백업을 공식 API로 교체하고 원본과 건수 일치(296 = 296) 확인</span></div>
+    <div class="check"><span class="mk">!</span><span><b>한계</b> 서버는 여전히 개인 PC에서 돕니다. 절전 누락은 매시 재확인으로 보완했지만, PC가 꺼져 있는 동안에는 보드도 멈춥니다.</span></div>
+  </div>
+  <div class="take rv">
+    <div class="tk hl"><h4>멱등하게 만들어 두면, 장애 대응이 단순해진다</h4><p>카드 생성이 몇 번 실행해도 같은 결과를 내도록 설계해 두었기에, 절전으로 인한 누락을 "더 자주 다시 확인하기"라는 단순한 방법으로 풀 수 있었습니다.</p></div>
+    <div class="tk"><h4>백업은 만들어지는지가 아니라, 다 담겼는지를 본다</h4><p>백업은 멈춰 있었고, 남은 파일도 일부만 담고 있었습니다. 백업이 있다는 사실보다 원본과 건수가 맞는지를 확인해야 한다는 것을 배웠습니다.</p></div>
+    <div class="tk"><h4>만들어 둔 기능도 내려놓을 수 있어야 한다</h4><p>파일 첨부는 이미 만들어 둔 기능이었지만, 사내 보안 정책과 맞지 않아 제거했습니다. 기능의 수보다 팀이 실제로 쓸 수 있는 범위에 맞추는 것이 더 중요했습니다.</p></div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="fnote">반복되는 일은 도구가 챙기도록.</div>
-  <div class="fmeta">OPS-BOARD, 사내 운영 보드, 제작 박지호</div>
+  <div class="fmeta">OPS-BOARD, 사내 운영 보드, 기획·구현·운영 박지호<br>Node.js, Express, SQLite(better-sqlite3, WAL), React(Vite), node-cron, pm2, Vitest</div>
 </div></footer></div>
 
 <div class="divider"><div class="wrap"><span class="cur">03 / Plan B</span><a href="#top">↑ 목차로</a></div></div>
@@ -598,11 +733,11 @@ body{background:#0a0d12}
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">01</span> Problem</div>
   <h2 class="s-title rv">가장 연결된 세대가, 여행지에선<br><span class="hl">가장 고립된 결정</span>을 내린다</h2>
-  <p class="lead rv">자유여행객의 70%는 치밀한 Plan A를 세우고 떠난다. 하지만 현지의 폭우·임시 휴업·긴 대기열은 공들인 동선을 한순간에 무너뜨린다. 기존 지도는 <strong>'정보'를 줄 뿐</strong>, 계획이 어긋난 그 순간 무엇을 해야 할지 — <strong>'의사결정'은 오롯이 사용자의 몫</strong>이었다.</p>
+  <p class="lead rv">자유여행객의 70%는 치밀한 Plan A를 세우고 떠납니다. 하지만 현지의 폭우·임시 휴업·긴 대기열은 공들인 동선을 한순간에 무너뜨립니다. 기존 지도는 <strong>'정보'를 줄 뿐</strong>, 계획이 어긋난 순간 무엇을 할지에 대한 <strong>'의사결정'은 오롯이 사용자의 몫</strong>이었습니다.</p>
   <div class="statrow rv">
     <div class="stat"><div class="n">55.6%</div><div class="d">가장 불편한 순간으로 '현지 단계의 예상치 못한 변수'를 꼽음 — 계획 단계의 약 2배</div></div>
     <div class="stat"><div class="n">41.7%</div><div class="d">가장 원하는 AI 기능 1위 = '실시간 동선 재구성 가이드' — Plan B의 핵심 그 자체</div></div>
-    <div class="stat"><div class="n">61.1%</div><div class="d">변수에 가장 취약한 계획형 여행자가 최대 다수. 다수가 대응책을 '없음'이라 답함 → 시장 공백</div></div>
+    <div class="stat"><div class="n">61.1%</div><div class="d">응답자 중 변수에 가장 취약한 계획형 여행자 비율. 대부분 대응책이 '없다'고 답함 → 시장 공백</div></div>
   </div>
   <div class="src rv">근거 · 자체 필드 설문 N=36 + 데스크 리서치</div>
 </div></section>
@@ -610,28 +745,28 @@ body{background:#0a0d12}
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">02</span> My Role</div>
   <h2 class="s-title rv">코드가 아니라, <span class="hl">사람과 문제 사이</span>에서</h2>
-  <p class="lead rv">나는 개발자의 언어를 이해하되, 그 이해로 사람의 문제를 푸는 자리에 섰다. 기획의 시작부터 검증의 끝까지를 책임졌고 — 필요할 땐, 코드까지 직접 짰다.</p>
+  <p class="lead rv">개발을 이해하는 데서 멈추지 않고, 그 이해로 사람의 문제를 푸는 역할을 맡았습니다. 기획의 시작부터 검증의 끝까지 책임졌고, 필요할 때는 코드도 직접 짰습니다.</p>
   <div class="roles rv">
-    <div class="role"><div class="rn">/ 01</div><div><h4>문제 정의 &amp; 리서치</h4><p>N=36 설문을 직접 설계·분석해 '정보 부족'이 아닌 <strong>'결정 피로'</strong>라는 진짜 페인을 특정했다.</p></div></div>
-    <div class="role"><div class="rn">/ 02</div><div><h4>우선순위 &amp; 스코프</h4><p>ICE 스코어링으로 핵심 4기능에 집중하고, 이미지 월드컵 온보딩 등은 과감히 이연했다.</p></div></div>
-    <div class="role"><div class="rn">/ 03</div><div><h4>지표 체계 설계</h4><p>AARRR 프레임과 NSM을 정의하고 Amplitude 17개 이벤트로 사용자 여정 전 구간을 계측했다.</p></div></div>
-    <div class="role"><div class="rn">/ 04</div><div><h4>팀 리드 &amp; 검증</h4><p>5인 팀을 운영(중간 4인 전환)하고, 2사이클 베타로 가설을 데이터로 검증했다.</p></div></div>
+    <div class="role"><div class="rn">/ 01</div><div><h4>문제 정의 &amp; 리서치</h4><p>N=36 설문을 직접 설계·분석해 '정보 부족'이 아닌 <strong>'결정 피로'</strong>라는 진짜 페인 포인트를 찾아냈습니다.</p></div></div>
+    <div class="role"><div class="rn">/ 02</div><div><h4>우선순위 &amp; 스코프</h4><p>ICE 스코어링으로 핵심 4기능에 집중하고, 이미지 월드컵 온보딩 등은 다음 단계로 미뤘습니다.</p></div></div>
+    <div class="role"><div class="rn">/ 03</div><div><h4>지표 체계 설계</h4><p>AARRR 프레임과 NSM을 정의하고 Amplitude 17개 이벤트로 사용자 여정 전 구간을 계측했습니다.</p></div></div>
+    <div class="role"><div class="rn">/ 04</div><div><h4>팀 리드 &amp; 검증</h4><p>5인 팀을 이끌었고(중간에 4인으로 재편), 2사이클 베타로 가설을 데이터로 검증했습니다.</p></div></div>
   </div>
   <div class="callout rv">
-    <div class="ttl">PM + Backend — 기획서만 넘기지 않았다, 직접 구현으로 증명했다</div>
-    <div class="row"><div class="lb">구현</div><div class="tx">핵심 4기능을 <b>내가 먼저 동작하는 형태로 구현</b>해 백엔드로 이관했다.</div></div>
-    <div class="row"><div class="lb">커버</div><div class="tx">백엔드 인력 2명 중 1명 이탈 시 그 공백의 상당 부분을 직접 메웠다 — <b>Spring Boot 추천 API</b>와 Trip → Plan → TripPlace 도메인 로직까지.</div></div>
-    <div class="quote-line">'개발자의 언어를 이해하는 기획자'라는 말을, 나는 커밋으로 보여줬다.</div>
+    <div class="ttl">PM + Backend — 기획서만 넘기지 않고, 직접 구현했습니다</div>
+    <div class="row"><div class="lb">구현</div><div class="tx">핵심 4기능을 <b>내가 먼저 동작하는 형태로 구현</b>한 뒤 백엔드로 이관했습니다.</div></div>
+    <div class="row"><div class="lb">커버</div><div class="tx">백엔드 2명 중 1명이 팀을 떠났을 때, <b>Spring Boot 추천 API</b>와 Trip → Plan → TripPlace 도메인 로직까지 맡아 그 공백의 상당 부분을 직접 메웠습니다.</div></div>
+    <div class="quote-line">'개발을 이해하는 기획자'라는 말을, 말이 아니라 커밋으로 보여 줬습니다.</div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">03</span> Solution</div>
   <h2 class="s-title rv">상황을 인지하고, <span class="hl">즉시 동선을 되살린다</span></h2>
-  <p class="lead rv">핵심 가치는 '탐색의 단축'. 흩어진 정보를 헤매던 시간을 초 단위로 줄이는 4개 기능과, 그 위를 가로지르는 개인화 레이어로 설계했다.</p>
+  <p class="lead rv">핵심 가치는 '탐색의 단축'입니다. 흩어진 정보를 헤매던 시간을 초 단위로 줄이는 4개 기능과, 그 위에 얹은 개인화 레이어로 설계했습니다.</p>
   <div class="callout rv" style="margin-bottom:8px">
     <div class="ttl">mood DNA · 초개인화 레이어</div>
-    <div class="row"><div class="lb">학습</div><div class="tx">별도 입력 없이 선택을 학습한다 — <b>채택 +1.0 / 무시 −0.3</b>의 implicit feedback으로 추천 가중치에 즉시 반영해, 쓸수록 취향이 또렷해진다.</div></div>
+    <div class="row"><div class="lb">학습</div><div class="tx">별도 입력 없이 사용자의 선택을 학습합니다. <b>채택 +1.0 / 무시 −0.3</b>의 암묵적 피드백(implicit feedback)을 추천 가중치에 바로 반영해, 쓸수록 취향에 맞아집니다.</div></div>
   </div>
   <div class="feat rv">
     <div class="fcard"><span class="fn">01</span><h4>AI 리뷰 통합 카드</h4><p>구글·네이버·인스타 리뷰를 GPT가 한 장으로 요약 (#태그·신뢰 배지).</p><div class="delta">10분 <em>→ 10초</em></div></div>
@@ -644,20 +779,20 @@ body{background:#0a0d12}
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">04</span> Measurement · The Turning Point</div>
   <h2 class="s-title rv">'선택'이 아니라 <span class="hl">'실제 교체'</span>를 셌다</h2>
-  <p class="lead rv">지표를 잘못 잡으면 개선의 방향도 틀어진다. 나는 NSM을 버튼 탭이 아니라 <strong>서버에 저장된 실제 교체</strong>로 정의했다. 일정이 진짜로 바뀌어야 '무너진 계획 복구'라는 핵심 가치가 전달되기 때문이다.</p>
+  <p class="lead rv">지표를 잘못 잡으면 개선의 방향도 틀어집니다. 그래서 NSM을 버튼 탭이 아니라 <strong>서버에 저장된 실제 교체</strong>로 정의했습니다. 일정이 실제로 바뀌어야 '무너진 계획 복구'라는 핵심 가치가 전달되기 때문입니다.</p>
   <div class="code rv"><span class="cm">// North Star Metric</span>
 NSM = alternative_selected  <span class="kw">(버튼 탭)</span>
     → alternative_replaced   <span class="kw">(실제 교체)</span></div>
   <div class="roles rv">
-    <div class="role"><div class="rn">진단</div><div><h4>1차 검증 · 지인 12명</h4><p>방향은 맞았다 — <strong>PMF 45%</strong>(Sean Ellis 40% 돌파), <strong>NPS +33</strong>, 대안 신뢰도 4.1/5. 그러나 '선택 → 실제 교체'에서 절반이 이탈, 전환율 42%가 최대 누수였다.</p></div></div>
-    <div class="role"><div class="rn">원인</div><div><h4>추천 품질이 아니라 '동선 불확실성'</h4><p>심사평과 설문이 한목소리였다 — "바꾸면 다음 일정이 어떻게 될지 몰라서 그냥 뒀다." (교체된 건의 82%가 이미 추천 TOP3)</p></div></div>
+    <div class="role"><div class="rn">진단</div><div><h4>1차 검증 · 지인 12명</h4><p>방향은 맞았습니다. <strong>PMF 45%</strong>(Sean Ellis 기준 40% 이상), <strong>NPS +33</strong>, 대안 신뢰도 4.1/5. 그러나 '선택 → 실제 교체' 단계에서 절반 넘게 이탈해, 전환율 42%가 가장 큰 누수였습니다.</p></div></div>
+    <div class="role"><div class="rn">원인</div><div><h4>추천 품질이 아니라 '동선 불확실성'</h4><p>심사평과 설문이 같은 이야기를 했습니다. "바꾸면 다음 일정이 어떻게 될지 몰라서 그냥 뒀다." 교체된 건의 82%가 이미 추천 TOP3 안에 있어, 추천 품질은 문제가 아니었습니다.</p></div></div>
     <div class="role"><div class="rn">고도화</div><div><h4>망설임의 원인 자체를 제거</h4><p>'왜 이 대안이 최선인지' 비교 근거 + 다음 일정 영향 미리보기(+N분) + 이전→대안→이후 동선 지도 + 원클릭 교체.</p></div></div>
-    <div class="role"><div class="rn">재검증</div><div><h4>2차 검증 · 지인 6명</h4><p>전환율 <strong>42% → 61%</strong>(+19%p), SUS 68 → 76, '실제로 바꿨다' 응답 40% → 58%. 개선 가설이 옳았음을 데이터로 증명했다.</p></div></div>
+    <div class="role"><div class="rn">재검증</div><div><h4>2차 검증 · 지인 6명</h4><p>전환율 <strong>42% → 61%</strong>(+19%p), SUS 68 → 76, '실제로 바꿨다' 응답 40% → 58%. 개선 가설이 맞았음을 데이터로 확인했습니다.</p></div></div>
   </div>
   <div class="callout rv">
     <div class="ttl">Engineering as Experience</div>
-    <div class="row"><div class="lb">병목</div><div class="tx">추천 API 지연의 원인은 외부 3사 <b>직렬 호출</b>이었다.</div></div>
-    <div class="row"><div class="lb">조치</div><div class="tx">WebClient <b>병렬 호출 · 캐싱 · N+1 제거</b>로 400초 → 20초(−95%), NAT 아키텍처 재설계로 연 $429 절감.</div></div>
+    <div class="row"><div class="lb">병목</div><div class="tx">추천 API 지연의 원인은 외부 3사 <b>직렬 호출</b>이었습니다.</div></div>
+    <div class="row"><div class="lb">조치</div><div class="tx">WebClient <b>병렬 호출 · 캐싱 · N+1 제거</b>로 응답을 400초 → 20초(−95%)로 줄이고, NAT 아키텍처를 재설계해 연 $429를 절감했습니다.</div></div>
     <div class="quote-line">"교체를 막은 건 추천 품질이 아니라 '결심'이었다." — 문제를 UX로 다시 정의한 순간.</div>
   </div>
 </div></section>
@@ -666,11 +801,11 @@ NSM = alternative_selected  <span class="kw">(버튼 탭)</span>
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">05</span> Business Model</div>
   <h2 class="s-title rv">기능이 아니라, <span class="hl">수익 구조</span>까지 설계했다</h2>
-  <p class="lead rv">아이디어에서 멈추지 않았다. 과금 구조와 단위경제를 직접 설계했고, 핵심은 <strong>실제 추천 API를 뜯어 원가의 정체를 밝힌 것</strong>이었다. 한 번 분석한 장소는 DB에 영속화되어, 다음 검색부터 비용이 들지 않는다.</p>
+  <p class="lead rv">아이디어에서 멈추지 않고 과금 구조와 단위경제까지 직접 설계했습니다. 핵심은 <strong>실제 추천 API를 뜯어 보고 원가가 어디서 생기는지 밝힌 것</strong>이었습니다.</p>
 
   <div class="callout rv">
     <div class="ttl">설계 원칙 · 무료의 핵심 가치는 잠그지 않는다</div>
-    <div class="row"><div class="lb">원칙</div><div class="tx">프리미엄을 <b>'횟수 해제'가 아니라 '새로운 능력'</b>으로 과금했다. 기존 무료 기능을 막아 수익을 만들면 Activation 자체가 무너지기 때문이다.</div></div>
+    <div class="row"><div class="lb">원칙</div><div class="tx">프리미엄을 <b>'횟수 해제'가 아니라 '새로운 능력'</b>으로 과금했습니다. 기존 무료 기능을 막아 수익을 만들면 Activation 자체가 무너지기 때문입니다.</div></div>
   </div>
 
   <div class="feat rv">
@@ -680,12 +815,12 @@ NSM = alternative_selected  <span class="kw">(버튼 탭)</span>
   </div>
 
   <h3 class="bm-sub rv">원가의 정체를 찾다</h3>
-  <p class="rv">대안찾기·틈새 시간·날씨 대안은 모두 <strong>같은 엔진</strong>이다. 근처 약 20개 후보를 모아 각각을 GPT로 분류하고, 리뷰·거리로 랭킹해 상위 5곳을 제시한다.</p>
+  <p class="rv">대안찾기·틈새 시간·날씨 대안은 모두 <strong>같은 엔진</strong>을 씁니다. 근처 약 20개 후보를 모아 각각을 GPT로 분류하고, 리뷰·거리로 순위를 매겨 상위 5곳을 제시합니다.</p>
   <div class="code rv"><span class="cm">// 추천 엔진 파이프라인</span>
 Nearby Search <span class="kw">→</span> 20개 후보
   <span class="kw">→</span> GPT-4o-mini × 20 (mood / space / type 분류)
   <span class="kw">→</span> 리뷰·거리 가중 랭킹 <span class="kw">→</span> 상위 5곳 제시</div>
-  <p class="rv"><strong>발견:</strong> GPT를 20번 돌려도 비용은 거의 오르지 않았다(20콜 ≈ ₩10). 진짜 비용은 <strong>20개 장소의 리뷰 상세 조회(Place Details)</strong>였다. 원가를 좌우하는 건 AI가 아니라 외부 API 호출 횟수였던 것이다.</p>
+  <p class="rv"><strong>발견:</strong> GPT를 20번 돌려도 비용은 거의 오르지 않았습니다(20콜 ≈ ₩10). 진짜 비용은 <strong>20개 장소의 리뷰 상세 조회(Place Details)</strong>였습니다. 원가를 좌우하는 건 AI가 아니라 외부 API 호출 횟수였습니다.</p>
 
   <div class="roles rv">
     <div class="role"><div class="rn">조치 1</div><div><h4>분류는 값싼 데이터로</h4><p>20개 후보의 mood/type 분류는 <strong>Nearby 응답 필드와 DB 캐시</strong>만으로 처리.</p></div></div>
@@ -701,9 +836,9 @@ Nearby Search <span class="kw">→</span> 20개 후보
       <tr><td>웜 · 대부분 DB 캐시</td><td>0–2곳</td><td class="c">≈ ₩60</td></tr>
     </tbody>
   </table>
-  <p class="rv" style="margin-top:14px"><strong>데이터 네트워크 효과.</strong> 장소 DB가 채워질수록 웜 비율이 올라가고 검색 단가는 계속 떨어진다. 쌓인 데이터가 그대로 원가 경쟁력이 되는 구조다. 실제 단가는 <span class="mono">cost_per_search</span> 이벤트에 <span class="mono">details_call_count</span>를 함께 로깅해 추적하도록 설계했다.</p>
+  <p class="rv" style="margin-top:14px"><strong>데이터 네트워크 효과.</strong> 장소 DB가 채워질수록 웜 비율이 올라가고 검색 단가는 계속 떨어집니다. 쌓인 데이터가 그대로 원가 경쟁력이 되는 구조입니다. 실제 단가는 <span class="mono">cost_per_search</span> 이벤트에 <span class="mono">details_call_count</span>를 함께 로깅해 추적하도록 설계했습니다.</p>
 
-  <p class="rv" style="margin-top:16px;font-size:14px;color:var(--ink-mute)">※ 위 단가는 실제 API 호출 구조를 바탕으로 산출한 <strong style="color:var(--ink-soft)">설계 단계의 추정치</strong>다(환율 ₩1,380 기준). 서비스는 베타 단계까지 진행했으며, 실매출은 발생하지 않았다.</p>
+  <p class="rv" style="margin-top:16px;font-size:14px;color:var(--ink-mute)">※ 위 단가는 실제 API 호출 구조를 바탕으로 산출한 <strong style="color:var(--ink-soft)">설계 단계의 추정치</strong>입니다(환율 ₩1,380 기준). 서비스는 베타 단계까지 진행했으며, 실매출은 발생하지 않았습니다.</p>
 </div></section>
 
 <style>
@@ -739,9 +874,9 @@ Nearby Search <span class="kw">→</span> 20개 후보
   <div class="eyebrow rv"><span class="num">07</span> Reflection</div>
   <h2 class="s-title rv">배운 것</h2>
   <div class="take rv">
-    <div class="tk"><h4>지표가 개선을 만든다</h4><p>'실제 교체'를 NSM으로 잡지 않았다면 42%의 누수를 발견하지 못했을 것이다. 무엇을 세느냐가 무엇을 고칠지를 결정한다.</p></div>
-    <div class="tk"><h4>기술은 곧 경험이다</h4><p>직접 구현해봤기에, 400초의 대기가 왜 '이탈'로 찍히는지 몸으로 알았다. 기획과 코드 사이를 오갈 수 있다는 건 나의 가장 큰 무기였다.</p></div>
-    <div class="tk hl"><h4>성장과 품질의 우선순위</h4><p>핵심 가치가 새는 상태에서 유저를 늘리는 건 밑 빠진 독이라 판단해, 마지막 스프린트를 '전환 고도화'에 집중했다. 전환은 증명했지만 — 성장과 품질을 완전히 순차로 두기보다 <strong>일부라도 병렬화했어야 했다</strong>는 걸 배웠다.</p></div>
+    <div class="tk"><h4>지표가 개선을 만든다</h4><p>'실제 교체'를 NSM으로 잡지 않았다면 42%의 누수를 발견하지 못했을 것입니다. 무엇을 세느냐가 무엇을 고칠지를 결정합니다.</p></div>
+    <div class="tk"><h4>기술은 곧 경험이다</h4><p>직접 구현해 봤기에 400초의 대기가 왜 '이탈'로 이어지는지 체감했습니다. 기획과 코드 사이를 오갈 수 있다는 점이 이 프로젝트에서 가장 큰 강점이었습니다.</p></div>
+    <div class="tk hl"><h4>성장과 품질의 우선순위</h4><p>핵심 가치가 새는 상태에서 사용자를 늘리는 건 밑 빠진 독에 물 붓기라고 판단해, 마지막 스프린트를 '전환 고도화'에 집중했습니다. 전환 개선은 확인했지만, 성장과 품질을 완전히 순서대로 두기보다 <strong>일부라도 병렬로 진행했어야 했다</strong>는 점을 배웠습니다.</p></div>
   </div>
 </div></section>
 
@@ -801,7 +936,7 @@ Nearby Search <span class="kw">→</span> 20개 후보
   <div class="metrics rv">
     <div class="metric"><div class="k">평균 응답</div><div class="v">15s<span class="arw">→</span><em>7s</em></div><div class="note">−53%</div></div>
     <div class="metric"><div class="k">실시간 폴링 주기</div><div class="v"><em>3s</em></div></div>
-    <div class="metric"><div class="k">인덱스 실험 데이터</div><div class="v"><em>10K</em></div><div class="note">쿼리 −4.6배</div></div>
+    <div class="metric"><div class="k">인덱스 실험 데이터</div><div class="v"><em>10K</em></div><div class="note">쿼리 4.6배 빨라짐</div></div>
     <div class="metric"><div class="k">분리된 탐지 모델</div><div class="v"><em>2</em>개</div></div>
   </div>
 </div></header>
@@ -809,7 +944,7 @@ Nearby Search <span class="kw">→</span> 20개 후보
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">01</span> Overview</div>
   <h2 class="s-title rv">"자리 있을까?"를 감이 아니라 <span class="hl">데이터로</span></h2>
-  <p class="lead rv">카공족·노트북족·모임 등으로 카페 수요는 늘었지만, <strong>빈 좌석을 미리 확인할 방법</strong>은 여전히 부족합니다. 자리를 찾아 매장을 한 바퀴 돌거나, 자리가 없어 발길을 돌린 경험은 누구에게나 있죠.</p>
+  <p class="lead rv">카공족·노트북족·모임 등으로 카페 수요는 늘었지만, <strong>빈 좌석을 미리 확인할 방법</strong>은 여전히 부족합니다. 자리를 찾아 매장을 한 바퀴 돌거나, 자리가 없어 발길을 돌린 경험은 누구에게나 있습니다.</p>
   <p class="rv">주차(카카오T)·웨이팅(캐치테이블)처럼 혼잡도는 이미 하나의 정보가 되었지만, 카페는 이 흐름에서 소외돼 있었습니다. 기존 서비스는 <strong>사용자 후기 기반</strong>이라 즉각적인 변화에 대응하기 어렵고 주관이 개입돼 정확도가 떨어졌습니다. Seatify는 이 한계를 <strong>AI 이미지 분석</strong>으로 보완합니다 — 천장 CCTV 영상을 YOLO로 분석하고 Homography로 평면 투영해, "진짜" 비어 있는 좌석을 실시간으로 보여줍니다.</p>
   <div class="callout rv">
     <div class="ttl">기획 전환 · Pivot</div>
@@ -819,7 +954,7 @@ Nearby Search <span class="kw">→</span> 20개 후보
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">02</span> User Research</div>
-  <h2 class="s-title rv">학교 친구 3명 인터뷰 — <span class="hl">문제는 진짜였다</span></h2>
+  <h2 class="s-title rv">학교 친구 3명 인터뷰로 <span class="hl">문제를 확인했다</span></h2>
   <p class="lead rv">기획을 검증하기 위해 카페를 자주 이용하는 <strong>학교 친구 3명을 직접 인터뷰</strong>했습니다. "자리 찾기"의 불편이 실제로 얼마나 반복되는지, 어떤 정보가 결정에 영향을 주는지를 묻고, 그 답을 <strong>기능 결정</strong>으로 옮겼습니다.</p>
   <div class="grid3 rv">
     <div class="iv"><div class="who"><div class="badge">A</div><div><div class="nm">인터뷰이 A</div><div class="rl">대학생 · 카공족</div></div></div>
@@ -890,7 +1025,7 @@ Full Scan <span class="kw">→</span> Index Scan
       <div class="code" style="margin-top:0"><span class="cm">-- 평균 응답 속도</span>
 15s <span class="kw">→</span> 7s   <span class="cm">(≈53% 개선)</span></div></div>
   </div>
-  <p class="rv" style="margin-top:22px">이 외에도 시간대별 좌석 혼잡도 예측, 타 카페 추천 기능을 백엔드에 추가했고, 클릭 로그 기반 실시간 추천(<strong>Kafka 비동기 파이프라인</strong>, "현재 이 카페를 N명이 보는 중")의 설계에 참여 — 동시성 충돌을 피하는 lock-free 비동기 흐름을 목표로 했습니다.</p>
+  <p class="rv" style="margin-top:22px">이 외에도 시간대별 좌석 혼잡도 예측, 타 카페 추천 기능을 백엔드에 추가했고, 클릭 로그 기반 실시간 추천(<strong>Kafka 비동기 파이프라인</strong>, "현재 이 카페를 N명이 보는 중")의 설계에도 참여했습니다. 동시성 충돌을 피하는 lock-free 비동기 흐름을 목표로 했습니다.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -1001,8 +1136,8 @@ Full Scan <span class="kw">→</span> Index Scan
 
 <section><div class="wrap">
   <div class="eyebrow rv"><span class="num">04</span> My Contribution</div>
-  <h2 class="s-title rv">개발자의 언어를 이해하는 기획자로서,<br><span class="hl">백엔드 전반</span>을 책임졌다</h2>
-  <p class="lead rv">3인 팀에서 백엔드 전반을 단독으로 담당했습니다. API 서버 설계·구현부터 인증, 파일 처리, DB, AI 연동, PDF 변환까지 서버 사이드 전체를 책임졌고 — 무엇을 만들지는 <strong>현장 인터뷰에서 도출한 요구사항</strong>이 결정했습니다.</p>
+  <h2 class="s-title rv">현장의 요구사항을,<br><span class="hl">백엔드 전반</span>으로 구현했다</h2>
+  <p class="lead rv">3인 팀에서 백엔드 전반을 단독으로 담당했습니다. API 서버 설계·구현부터 인증, 파일 처리, DB, AI 연동, PDF 변환까지 서버 사이드 전체를 책임졌습니다. 무엇을 만들지는 <strong>현장 인터뷰에서 도출한 요구사항</strong>이 정했습니다.</p>
   <div class="roles rv">
     <div class="role"><div class="rn">01</div><div><h4>RESTful API · 계층형 아키텍처</h4><p>Controller → Service → Repository로 관심사를 분리하고 DTO/Entity 변환을 일관 적용. 대시보드 API는 <strong>countEmotions() · findMostFrequentEmotion()</strong> 으로 감정 통계를 집계해 시각화 데이터를 반환.</p></div></div>
     <div class="role"><div class="rn">02</div><div><h4>인증 · 파일 업로드</h4><p><strong>JWT 기반 stateless 인증</strong>으로 요청별 신원 검증. Multer로 녹음 파일을 저장하되 타임스탬프를 붙여 파일명 충돌을 방지.</p></div></div>
@@ -1013,7 +1148,7 @@ Full Scan <span class="kw">→</span> Index Scan
     <div class="row"><div class="lb">문제</div><div class="tx">Naver Clova STT + KoBERT 조합으로 감정 분류를 시도했으나, <b>긴 문장·복잡한 문맥에서 정확도가 낮고</b> 재학습·튜닝에 과도한 리소스가 필요했습니다.</div></div>
     <div class="row"><div class="lb">해결</div><div class="tx">감정 분석·요약을 <b>OpenAI API로 전환</b>. 별도 학습 없이 즉시 적용 가능하고, 복잡한 문맥에서도 감정 분류와 요약을 동시에 높은 정확도로 수행하도록 개선했습니다.</div></div>
     <div class="row"><div class="lb">결과</div><div class="tx">STT 데이터를 더 신뢰성 있게 분석·활용 → 감정 분석 정확도와 처리 효율을 모두 향상.</div></div>
-    <div class="quote-line">'모델이 좋다'가 아니라 '우리 데이터에서 잘 동작하는가' — 검증을 기준으로 삼은 기술 의사결정이었다.</div>
+    <div class="quote-line">'모델이 좋다'가 아니라 '우리 데이터에서 잘 동작하는가' — 검증을 기준으로 삼은 기술 의사결정이었습니다.</div>
   </div>
 </div></section>
 
@@ -1043,7 +1178,7 @@ Full Scan <span class="kw">→</span> Index Scan
   </div>
   <div class="take rv">
     <div class="tk"><h4>사용자 문제에서 출발하는 설계</h4><p>현장 인터뷰 → 요구사항 → DB 설계 → API로 이어지는 과정을 통해, 기술이 사용자의 실제 문제를 어떻게 풀어야 하는지 배웠습니다.</p></div>
-    <div class="tk hl"><h4>검증 기반 기술 의사결정</h4><p>"모델이 좋다"가 아니라 "우리 데이터에서 잘 동작하는가"를 기준으로 KoBERT→OpenAI 전환을 주도하며, 근거를 갖고 기술을 선택하는 감각을 익혔습니다.</p></div>
+    <div class="tk hl"><h4>검증 기반 기술 의사결정</h4><p>KoBERT→OpenAI 전환을 주도하며, 성능 수치보다 우리 데이터에서의 검증 결과를 근거로 기술을 고르는 감각을 익혔습니다.</p></div>
     <div class="tk"><h4>유지보수 가능한 API 설계</h4><p>계층형 아키텍처와 DTO/Entity 분리를 실제 프로젝트에 적용하며 확장 가능한 서버 설계 감각을 익혔습니다.</p></div>
   </div>
   <div class="checks rv" style="margin-top:22px">
